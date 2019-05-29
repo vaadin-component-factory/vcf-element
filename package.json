@@ -1,0 +1,59 @@
+{
+  "name": "vcf-element",
+  "version": "0.1.0",
+  "description": "Hierarchical element visualizing web component",
+  "main": "theme/lumo/vcf-element.js",
+  "author": "Vaadin Ltd",
+  "license": "https://raw.githubusercontent.com/vaadin/vaadin-incubator-element/master/LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "vaadin-component-factory/vcf-element"
+  },
+  "keywords": [
+    "Vaadin",
+    "vaadin-incubator-element",
+    "vaadin-component-factory",
+    "web-components",
+    "web-component",
+    "polymer"
+  ],
+  "scripts": {
+    "test": "wct",
+    "lint": "eslint src/*.js",
+    "start": "polymer serve -o"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0",
+    "@vaadin/vaadin-element-mixin": "^2.1.3",
+    "@vaadin/vaadin-lumo-styles": "^1.5.0",
+    "@vaadin/vaadin-themable-mixin": "^1.4.4"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
+    "@polymer/test-fixture": "^4.0.2",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "babel-eslint": "^10.0.1",
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-vaadin": "latest",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "mocha": "^5.2.0",
+    "polymer-cli": "^1.9.10",
+    "prettier": "^1.17.1",
+    "wct-mocha": "^1.0.0"
+  }
+}
