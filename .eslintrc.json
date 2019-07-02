@@ -11,9 +11,6 @@
     "sourceType": "module",
     "allowImportExportEverywhere": true
   },
-  "globals": {
-    "vis": false
-  },
   "rules": {
     "max-len": ["error", { "code": 120 }]
   }
