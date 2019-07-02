@@ -22,9 +22,7 @@ class VcfElement extends ElementMixin(ThemableMixin(PolymerElement)) {
   }
 
   static get properties() {
-    return {
-      
-    };
+    return {};
   }
 
   connectedCallback() {
@@ -33,3 +31,12 @@ class VcfElement extends ElementMixin(ThemableMixin(PolymerElement)) {
 }
 
 customElements.define(VcfElement.is, VcfElement);
+
+/**
+ * @namespace Vaadin
+ */
+window.Vaadin.VcfElement = VcfElement;
+
+if (window.Vaadin.runIfDevelopmentMode) {
+  window.Vaadin.runIfDevelopmentMode('vaadin-license-checker', VcfElement);
+}
