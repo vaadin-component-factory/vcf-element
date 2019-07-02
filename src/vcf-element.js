@@ -24,10 +24,6 @@ class VcfElement extends ElementMixin(ThemableMixin(PolymerElement)) {
   static get properties() {
     return {};
   }
-
-  connectedCallback() {
-    super.connectedCallback();
-  }
 }
 
 customElements.define(VcfElement.is, VcfElement);

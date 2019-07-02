@@ -1,7 +1,7 @@
 {
   "name": "vcf-element",
   "version": "0.1.0",
-  "description": "Hierarchical element visualizing web component",
+  "description": "Vaadin Component Factory Element",
   "main": "theme/lumo/vcf-element.js",
   "author": "Vaadin Ltd",
   "license": "https://raw.githubusercontent.com/vaadin/vaadin-incubator-element/master/LICENSE",
@@ -13,6 +13,7 @@
     "Vaadin",
     "vaadin-incubator-element",
     "vaadin-component-factory",
+    "vcf-element",
     "web-components",
     "web-component",
     "polymer"
