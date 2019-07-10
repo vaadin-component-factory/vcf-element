@@ -7,13 +7,13 @@
 Install `vcf-element`:
 
 ```sh
-npm i @vaadin/vcf-element --save
+npm i @vaadin-component-factory/vcf-element --save
 ```
 
 Once installed, import it in your application:
 
 ```js
-import '@vaadin/vcf-element/vcf-element.js';
+import '@vaadin-component-factory/vcf-element/vcf-element.js';
 ```
 
 ## Running demo
