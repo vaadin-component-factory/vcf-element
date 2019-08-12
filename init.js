@@ -21,10 +21,18 @@ ____    ____  ______  _______
 // Note: These should all be relative to the project root directory
 const rmDirs = ['.git'];
 const rmFiles = ['init.js'];
-const modifyFiles = ['package.json', 'test/element_test.html'];
+const modifyFiles = [
+  'package.json',
+  'src/vcf-element.js',
+  'test/vcf-element_test.html',
+  'theme/lumo/vcf-element.js',
+  'theme/lumo/vcf-element-styles.js'
+];
 const renameFiles = [
   ['src/vcf-element.js', 'src/--elementname--.js'],
-  ['test/vcf-element_test.html', 'test/--elementname--_test.html']
+  ['test/vcf-element_test.html', 'test/--elementname--_test.html'],
+  ['theme/lumo/vcf-element.js', 'theme/lumo/--elementname--.js'],
+  ['theme/lumo/vcf-element-styles.js', 'theme/lumo/--elementname---styles.js']
 ];
 
 const _promptSchemaElementName = {
