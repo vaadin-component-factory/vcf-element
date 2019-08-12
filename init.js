@@ -22,8 +22,12 @@ ____    ____  ______  _______
 const rmDirs = ['.git'];
 const rmFiles = ['init.js'];
 const modifyFiles = [
+  'index.html',
+  'README.md',
   'package.json',
+  'demo/index.html',
   'src/vcf-element.js',
+  'test/index.html',
   'test/vcf-element_test.html',
   'theme/lumo/vcf-element.js',
   'theme/lumo/vcf-element-styles.js'

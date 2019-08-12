@@ -1,28 +1,28 @@
-# &lt;vcf-element&gt;
+# &lt;--elementname--&gt;
 
 **Note that this is a starter boilerplate for creating Polymer 3 based components.**
 
 ## Installation
 
-Install `vcf-element`:
+Install `--elementname--`:
 
 ```sh
-npm i @vaadin-component-factory/vcf-element --save
+npm i @vaadin-component-factory/--elementname-- --save
 ```
 
 Once installed, import it in your application:
 
 ```js
-import '@vaadin-component-factory/vcf-element/vcf-element.js';
+import '@vaadin-component-factory/--elementname--/--elementname--.js';
 ```
 
 ## Running demo
 
-1. Fork the `vcf-element` repository and clone it locally.
+1. Fork the `--elementname--` repository and clone it locally.
 
 1. Make sure you have [npm](https://www.npmjs.com/) installed.
 
-1. When in the `vcf-element` directory, run `npm install` to install dependencies.
+1. When in the `--elementname--` directory, run `npm install` to install dependencies.
 
 1. Run `npm start` to open the demo.
 
