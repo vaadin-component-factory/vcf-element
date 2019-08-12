@@ -21,7 +21,8 @@
   "scripts": {
     "test": "wct",
     "lint": "eslint src/*.js",
-    "start": "polymer serve -o"
+    "start": "polymer serve -o",
+    "postinstall": "node init.js"
   },
   "husky": {
     "hooks": {
@@ -47,6 +48,7 @@
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "babel-eslint": "^10.0.1",
     "chai": "^4.2.0",
+    "colors": "^1.3.3",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-config-vaadin": "latest",
@@ -55,6 +57,9 @@
     "mocha": "^5.2.0",
     "polymer-cli": "^1.9.10",
     "prettier": "^1.17.1",
+    "prompt": "^1.0.0",
+    "replace-in-file": "^4.1.2",
+    "shelljs": "^0.8.3",
     "wct-mocha": "^1.0.0"
   },
   "bugs": {
