@@ -212,8 +212,8 @@ function modifyContents(elementname, username, usermail) {
   try {
     const changes = replace.sync({
       files,
-      from: [/--elementname--/g, /--elementclassname--/g, /--username--/g, /--usermail--/g],
-      to: [elementname, elementclassname, username, usermail]
+      from: [/--elementname--/g, /--elementclassname--/g, /--username--/g, /--usermail--/g, /\*\*Note.*\*\*/],
+      to: [elementname, elementclassname, username, usermail, '']
     });
     console.log(colors.yellow(modifyFiles.join('\n')));
   } catch (error) {
