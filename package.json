@@ -1,19 +1,19 @@
 {
-  "name": "@vaadin-component-factory/vcf-element",
+  "name": "@vaadin-component-factory/--elementname--",
   "version": "0.1.0",
   "description": "Vaadin Component Factory Element",
-  "main": "theme/lumo/vcf-element.js",
+  "main": "theme/lumo/--elementname--.js",
   "author": "Vaadin Ltd",
   "license": "https://raw.githubusercontent.com/vaadin/vaadin-incubator-element/master/LICENSE",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vaadin-component-factory/vcf-element.git"
+    "url": "git+https://github.com/vaadin-component-factory/--elementname--.git"
   },
   "keywords": [
     "Vaadin",
     "vaadin-incubator-element",
     "vaadin-component-factory",
-    "vcf-element",
+    "--elementname--",
     "web-components",
     "web-component",
     "polymer"
@@ -21,7 +21,8 @@
   "scripts": {
     "test": "wct",
     "lint": "eslint src/*.js",
-    "start": "polymer serve -o"
+    "start": "polymer serve -o",
+    "postinstall": "node init.js"
   },
   "husky": {
     "hooks": {
@@ -47,6 +48,7 @@
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "babel-eslint": "^10.0.1",
     "chai": "^4.2.0",
+    "colors": "^1.3.3",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-config-vaadin": "latest",
@@ -55,12 +57,15 @@
     "mocha": "^5.2.0",
     "polymer-cli": "^1.9.10",
     "prettier": "^1.17.1",
+    "prompt": "^1.0.0",
+    "replace-in-file": "^4.1.2",
+    "shelljs": "^0.8.3",
     "wct-mocha": "^1.0.0"
   },
   "bugs": {
-    "url": "https://github.com/vaadin-component-factory/vcf-element/issues"
+    "url": "https://github.com/vaadin-component-factory/--elementname--/issues"
   },
-  "homepage": "https://github.com/vaadin-component-factory/vcf-element#readme",
+  "homepage": "https://github.com/vaadin-component-factory/--elementname--#readme",
   "directories": {
     "test": "test"
   }

@@ -1,2 +1,2 @@
-import './vcf-element-styles';
-import '../../src/vcf-element';
+import './--elementname---styles';
+import '../../src/--elementname--';
