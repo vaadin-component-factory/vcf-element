@@ -1,6 +1,6 @@
 {
   "name": "@vaadin-component-factory/--elementname--",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Vaadin Component Factory Element",
   "main": "theme/lumo/--elementname--.js",
   "author": "Vaadin Ltd",
