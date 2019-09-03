@@ -8,6 +8,9 @@
     <script type="module" src="demo.js"></script>
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
+        .centered {
+          max-width: 1000px;
+        }
         main {
           opacity: 1;
           transition: opacity 1s;
@@ -17,6 +20,9 @@
         }
       </style>
     </custom-style>
+    <script>
+      window.addEventListener('WebComponentsReady', () => document.querySelector('main').classList.remove('hidden'));
+    </script>
   </head>
   <body>
     <main class="vertical-section-container centered hidden">

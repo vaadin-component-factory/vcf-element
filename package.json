@@ -23,7 +23,8 @@
     "lint": "eslint src/*.js",
     "start": "polymer serve -o",
     "build:demo": "webpack",
-    "postinstall": "node init.js"
+    "postinstall": "node init.js",
+    "publish": "node publish.js"
   },
   "husky": {
     "hooks": {
