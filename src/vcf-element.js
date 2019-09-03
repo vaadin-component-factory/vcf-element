@@ -17,10 +17,6 @@ class --elementclassname-- extends ElementMixin(ThemableMixin(PolymerElement)) {
     return '--elementname--';
   }
 
-  static get version() {
-    return '0.1.0';
-  }
-
   static get properties() {
     return {};
   }
