@@ -13,7 +13,7 @@ npm i @vaadin-component-factory/--elementname-- --save
 Once installed, import it in your application:
 
 ```js
-import '@vaadin-component-factory/--elementname--/--elementname--.js';
+import '@vaadin-component-factory/--elementname--';
 ```
 
 ## Running demo
