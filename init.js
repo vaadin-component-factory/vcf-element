@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /**
  * This script runs automatically after your first npm-install.
  */
@@ -74,6 +75,18 @@ const _promptSchemaElementSuggest = {
   }
 };
 
+const _promptSchemaRemoveGit = {
+  properties: {
+    removegit: {
+      description: colors.cyan('Would you like to reset the git history (delete and recreate .git)? [Yes/No]'),
+      pattern: /^(y(es)?|n(o)?)$/i,
+      type: 'string',
+      required: true,
+      message: 'You need to type "Yes" or "No" to continue...'
+    }
+  }
+};
+
 _prompt.start();
 _prompt.message = '';
 
@@ -110,7 +123,6 @@ function elementNameCreate() {
   _prompt.get(_promptSchemaElementName, (err, res) => {
     if (err) {
       console.log(colors.red('Sorry, there was an error building the workspace :('));
-      removeItems();
       process.exit(1);
       return;
     }
@@ -126,12 +138,26 @@ function elementDescriptionCreate(elementname) {
   _prompt.get(_promptSchemaElementDescription, (err, res) => {
     if (err) {
       console.log(colors.red('Sorry, there was an error building the workspace :('));
-      removeItems();
       process.exit(1);
       return;
     }
 
-    setupElement(elementname, res.description);
+    removeGitChoice(elementname, res.description);
+  });
+}
+
+/**
+ * Asks the user whether they would like to reset git history
+ */
+function removeGitChoice(elementname, elementdescription) {
+  _prompt.get(_promptSchemaRemoveGit, (err, res) => {
+    if (err) {
+      console.log(colors.red('Sorry, there was an error building the workspace :('));
+      process.exit(1);
+      return;
+    }
+
+    setupElement(elementname, elementdescription, res.removegit.toLowerCase().charAt(0) === 'y');
   });
 }
 
@@ -187,20 +213,20 @@ function elementNameSuggestedIsDefault() {
  *
  * @param elementname
  */
-function setupElement(elementname, elementdescription) {
+function setupElement(elementname, elementdescription, removegit) {
   console.log(colors.cyan('\nThanks for the info. The last few changes are being made... hang tight!\n\n'));
 
   // Get the Git username and email before the .git directory is removed
   let username = exec('git config user.name').stdout.trim();
   let usermail = exec('git config user.email').stdout.trim();
 
-  removeItems();
+  removeItems(removegit);
 
   modifyContents(elementname, elementdescription, username, usermail);
 
   renameItems(elementname);
 
-  finalize();
+  finalize(removegit);
 
   console.log(colors.cyan("OK, you're all set. Happy coding!! ;)\n"));
 }
@@ -208,12 +234,15 @@ function setupElement(elementname, elementdescription) {
 /**
  * Removes items from the project that aren't needed after the initial setup
  */
-function removeItems() {
+function removeItems(removegit) {
   console.log(colors.underline.white('Removed'));
 
   // The directories and files are combined here, to simplify the function,
   // as the 'rm' command checks the item type before attempting to remove it
-  let rmItems = rmDirs.concat(rmFiles);
+  let rmItems = rmFiles;
+  if (removegit) {
+    rmItems = rmDirs.concat(rmFiles);
+  }
   rm('-rf', rmItems.map(f => path.resolve(__dirname, '.', f)));
   console.log(colors.red(rmItems.join('\n')));
 
@@ -281,14 +310,16 @@ function renameItems(elementname) {
 /**
  * Calls any external programs to finish setting up the element
  */
-function finalize() {
+function finalize(removegit) {
   console.log(colors.underline.white('Finalizing'));
 
   // Recreate Git folder
-  let gitInitOutput = exec('git init "' + path.resolve(__dirname, '.') + '"', {
-    silent: true
-  }).stdout;
-  console.log(colors.green(gitInitOutput.replace(/(\n|\r)+/g, '')));
+  if (removegit) {
+    let gitInitOutput = exec('git init "' + path.resolve(__dirname, '.') + '"', {
+      silent: true
+    }).stdout;
+    console.log(colors.green(gitInitOutput.replace(/(\n|\r)+/g, '')));
+  }
 
   // Remove post-install command
   let jsonPackage = path.resolve(__dirname, '.', 'package.json');
