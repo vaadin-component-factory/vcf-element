@@ -1,6 +1,6 @@
 {
   "npm": true,
-  "lint": {
-    "rules": ["polymer-3"]
-  }
+  "moduleResolution": "node",
+  "extraDependencies": ["node_modules/@webcomponents/webcomponentsjs/**", "analysis.json"],
+  "builds": [{ "name": "api", "preset": "es5-bundled" }]
 }

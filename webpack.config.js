@@ -3,7 +3,6 @@
 const { resolve, join } = require('path');
 const merge = require('webpack-merge');
 const { BabelMultiTargetPlugin } = require('webpack-babel-multi-target-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
@@ -12,7 +11,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const BrotliPlugin = require('brotli-webpack-plugin');
 
-const OUTPUT_PATH = resolve('dist');
+const OUTPUT_PATH = resolve('build');
 const INDEX_TEMPLATE = resolve('./demo/index.html');
 
 const webcomponentsjs = './node_modules/@webcomponents/webcomponentsjs';
@@ -105,14 +104,19 @@ const productionConfig = merge([
       ]
     },
     plugins: [
-      new CleanWebpackPlugin(),
       new CopyWebpackPlugin([...polyfills]),
       new HtmlWebpackPlugin({
-        template: INDEX_TEMPLATE
+        template: INDEX_TEMPLATE,
+        minify: {
+          collapseWhitespace: true,
+          removeComments: true,
+          minifyCSS: true,
+          minifyJS: true
+        }
       }),
       new HtmlReplaceWebpackPlugin([
         {
-          pattern: /<script.*?src=".*?\.js".*?<\/script>/g,
+          pattern: /<script dev.*?src=".*?\.js".*?<\/script>/g,
           replacement: ''
         }
       ]),

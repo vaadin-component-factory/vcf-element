@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" />
     <title>--elementname-- demo</title>
-    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-    <script type="module" src="demo.js"></script>
+    <script dev src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script dev type="module" src="demo.js"></script>
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
         .centered {
@@ -13,7 +13,7 @@
         }
         main {
           opacity: 1;
-          transition: opacity 1s;
+          transition: opacity 0.5s;
         }
         main.hidden {
           opacity: 0;
@@ -26,6 +26,7 @@
   </head>
   <body>
     <main class="vertical-section-container centered hidden">
+      <h3><a href="api/#/elements/Vaadin.--elementclassname--">API documentation ↗</a></h3>
       <h3>Basic</h3>
       <demo-snippet>
         <template>

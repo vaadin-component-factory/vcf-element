@@ -2,6 +2,16 @@
 
 **Note that this is a starter boilerplate for creating Polymer 3 based components.**
 
+**Run `npm install` and follow the prompts to setup the workspace.**
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/vaadin/web-components?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![npm version](https://badgen.net/npm/v/@vaadin-component-factory/--elementname--)](https://www.npmjs.com/package/@vaadin-component-factory/--elementname--)
+[![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/vaadin-component-factory--elementname--)
+
+[Live demo ↗](https://--elementname--.netlify.com)
+|
+[API documentation ↗](https://--elementname--.netlify.com/api/#/elements/Vaadin.--elementclassname--)
+
 ## Installation
 
 Install `--elementname--`:
@@ -10,10 +20,18 @@ Install `--elementname--`:
 npm i @vaadin-component-factory/--elementname-- --save
 ```
 
+## Usage
+
 Once installed, import it in your application:
 
 ```js
-import '@vaadin-component-factory/--elementname--';
+import '@vaadin-component-factory/--elementname--/--elementname--.js';
+```
+
+Add `<--elementname-->` element to the page.
+
+```html
+<--elementname--></--elementname-->
 ```
 
 ## Running demo
@@ -28,7 +46,11 @@ import '@vaadin-component-factory/--elementname--';
 
 ## Contributing
 
-  To contribute to the component, please read [the guideline](https://github.com/vaadin/vaadin-core/blob/master/CONTRIBUTING.md) first.
+To contribute to the component, please read [the guideline](https://github.com/vaadin/vaadin-core/blob/master/CONTRIBUTING.md) first.
+
+## Vaadin Prime
+
+This component is available in the Vaadin Prime subscription. It is still open source, but you need to have a valid CVAL license in order to use it. Read more at: https://vaadin.com/pricing
 
 ## License
 

@@ -25,6 +25,7 @@ const modifyFiles = [
   'index.html',
   'README.md',
   'package.json',
+  'demo/demo.js',
   'demo/index.html',
   'src/vcf-element.js',
   'test/index.html',
@@ -47,6 +48,16 @@ const _promptSchemaElementName = {
       type: 'string',
       required: true,
       message: '"kebab-case" uses lowercase letters, and hyphens for any punctuation'
+    }
+  }
+};
+
+const _promptSchemaElementDescription = {
+  properties: {
+    description: {
+      description: colors.cyan('Please provide a description of the element'),
+      pattern: /.*/,
+      type: 'string'
     }
   }
 };
@@ -76,7 +87,7 @@ if (!which('git')) {
 }
 
 // Say hi!
-console.log(colors.cyan(VCF));
+console.log(colors.blue(VCF));
 console.log(colors.cyan("Hi! You're almost ready to make the next great VCF web component."));
 
 // Generate the element name and start the tasks
@@ -88,7 +99,7 @@ if (process.env.CI == null) {
   }
 } else {
   // This is being run in a CI environment, so don't ask any questions
-  setupElement(elementNameSuggested());
+  setupElement(elementNameSuggested(), '');
 }
 
 /**
@@ -104,7 +115,23 @@ function elementNameCreate() {
       return;
     }
 
-    setupElement(res.element);
+    elementDescriptionCreate(res.element);
+  });
+}
+
+/**
+ * Asks the user for a decription of the element to be used in package.json and summary for jsdocs
+ */
+function elementDescriptionCreate(elementname) {
+  _prompt.get(_promptSchemaElementDescription, (err, res) => {
+    if (err) {
+      console.log(colors.red('Sorry, there was an error building the workspace :('));
+      removeItems();
+      process.exit(1);
+      return;
+    }
+
+    setupElement(elementname, res.description);
   });
 }
 
@@ -120,7 +147,7 @@ function elementNameSuggestedAccept() {
     }
 
     if (res.useSuggestedName.toLowerCase().charAt(0) === 'y') {
-      setupElement(elementNameSuggested());
+      elementDescriptionCreate(elementNameSuggested());
     } else {
       elementNameCreate();
     }
@@ -160,7 +187,7 @@ function elementNameSuggestedIsDefault() {
  *
  * @param elementname
  */
-function setupElement(elementname) {
+function setupElement(elementname, elementdescription) {
   console.log(colors.cyan('\nThanks for the info. The last few changes are being made... hang tight!\n\n'));
 
   // Get the Git username and email before the .git directory is removed
@@ -169,7 +196,7 @@ function setupElement(elementname) {
 
   removeItems();
 
-  modifyContents(elementname, username, usermail);
+  modifyContents(elementname, elementdescription, username, usermail);
 
   renameItems(elementname);
 
@@ -197,10 +224,11 @@ function removeItems() {
  * Updates the contents of the template files with the element name or user details
  *
  * @param elementname
+ * @param elementdescription
  * @param username
  * @param usermail
  */
-function modifyContents(elementname, username, usermail) {
+function modifyContents(elementname, elementdescription, username, usermail) {
   console.log(colors.underline.white('Modified'));
 
   const elementclassname = elementname
@@ -208,12 +236,20 @@ function modifyContents(elementname, username, usermail) {
     .map(c => c[0].toUpperCase() + c.slice(1))
     .join('');
 
-  let files = modifyFiles.map(f => path.resolve(__dirname, '.', f));
+  const files = modifyFiles.map(f => path.resolve(__dirname, '.', f));
   try {
-    const changes = replace.sync({
+    replace.sync({
       files,
-      from: [/--elementname--/g, /--elementclassname--/g, /--username--/g, /--usermail--/g, /\*\*Note.*\*\*/],
-      to: [elementname, elementclassname, username, usermail, '']
+      from: [
+        /--elementname--/g,
+        /--elementclassname--/g,
+        /--elementdescription--/g,
+        /--username--/g,
+        /--usermail--/g,
+        /\*\*Note.*\*\*/,
+        /\*\*Run.*\*\*/
+      ],
+      to: [elementname, elementclassname, elementdescription, username, usermail, '', '']
     });
     console.log(colors.yellow(modifyFiles.join('\n')));
   } catch (error) {
@@ -234,7 +270,7 @@ function renameItems(elementname) {
   renameFiles.forEach(function(files) {
     // Files[0] is the current filename
     // Files[1] is the new name
-    let newFilename = files[1].replace(/--elementname--/g, elementname);
+    const newFilename = files[1].replace(/--elementname--/g, elementname);
     mv(path.resolve(__dirname, '.', files[0]), path.resolve(__dirname, '.', newFilename));
     console.log(colors.cyan(files[0] + ' => ' + newFilename));
   });
