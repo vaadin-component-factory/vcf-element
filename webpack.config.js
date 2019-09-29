@@ -16,6 +16,13 @@ const INDEX_TEMPLATE = resolve('./demo/index.html');
 
 const webcomponentsjs = './node_modules/@webcomponents/webcomponentsjs';
 
+const assets = [
+  {
+    from: resolve('./demo/favicon.ico'),
+    to: OUTPUT_PATH
+  }
+];
+
 const polyfills = [
   {
     from: resolve(`${webcomponentsjs}/webcomponents-*.{js,map}`),
@@ -104,7 +111,7 @@ const productionConfig = merge([
       ]
     },
     plugins: [
-      new CopyWebpackPlugin([...polyfills]),
+      new CopyWebpackPlugin([...polyfills, ...assets]),
       new HtmlWebpackPlugin({
         template: INDEX_TEMPLATE,
         minify: {

@@ -1,4 +1,4 @@
-# &lt;--elementname--&gt;
+# &lt;vcf-element&gt;
 
 **Note that this is a starter boilerplate for creating Polymer 3 based components.**
 
@@ -6,20 +6,20 @@
 
 <!--
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/vaadin/web-components?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![npm version](https://badgen.net/npm/v/@vaadin-component-factory/--elementname--)](https://www.npmjs.com/package/@vaadin-component-factory/--elementname--)
-[![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/vaadin-component-factory--elementname--)
+[![npm version](https://badgen.net/npm/v/@vaadin-component-factory/vcf-element)](https://www.npmjs.com/package/@vaadin-component-factory/vcf-element)
+[![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/vaadin-component-factoryvcf-element)
 
-[Live demo ↗](https://--elementname--.netlify.com)
+[Live demo ↗](https://vcf-element.netlify.com)
 |
-[API documentation ↗](https://--elementname--.netlify.com/api/#/elements/Vaadin.--elementclassname--)
+[API documentation ↗](https://vcf-element.netlify.com/api/#/elements/Vaadin.VcfElement)
 -->
 
 ## Installation
 
-Install `--elementname--`:
+Install `vcf-element`:
 
 ```sh
-npm i @vaadin-component-factory/--elementname-- --save
+npm i @vaadin-component-factory/vcf-element --save
 ```
 
 ## Usage
@@ -27,22 +27,22 @@ npm i @vaadin-component-factory/--elementname-- --save
 Once installed, import it in your application:
 
 ```js
-import '@vaadin-component-factory/--elementname--/--elementname--.js';
+import '@vaadin-component-factory/vcf-element/vcf-element.js';
 ```
 
-Add `<--elementname-->` element to the page.
+Add `<vcf-element>` element to the page.
 
 ```html
-<--elementname--></--elementname-->
+<vcf-element></vcf-element>
 ```
 
 ## Running demo
 
-1. Fork the `--elementname--` repository and clone it locally.
+1. Fork the `vcf-element` repository and clone it locally.
 
 1. Make sure you have [npm](https://www.npmjs.com/) installed.
 
-1. When in the `--elementname--` directory, run `npm install` to install dependencies.
+1. When in the `vcf-element` directory, run `npm install` to install dependencies.
 
 1. Run `npm start` to open the demo.
 

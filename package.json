@@ -1,19 +1,19 @@
 {
-  "name": "@vaadin-component-factory/--elementname--",
-  "version": "0.1.2",
+  "name": "@vaadin-component-factory/vcf-element",
+  "version": "0.1.0",
   "description": "--elementdescription--",
-  "main": "theme/lumo/--elementname--.js",
+  "main": "theme/lumo/vcf-element.js",
   "author": "Vaadin Ltd",
   "license": "https://raw.githubusercontent.com/vaadin/vaadin-incubator-element/master/LICENSE",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vaadin-component-factory/--elementname--.git"
+    "url": "git+https://github.com/vaadin-component-factory/vcf-element.git"
   },
   "keywords": [
     "Vaadin",
     "vaadin-incubator-element",
     "vaadin-component-factory",
-    "--elementname--",
+    "vcf-element",
     "web-components",
     "web-component",
     "polymer"
@@ -26,8 +26,8 @@
     "build:prod": "run-s build:api build:demo",
     "build:api": "npm run prestart && polymer build",
     "build:demo": "webpack",
-    "postinstall": "node init.js",
-    "publish": "node publish.js"
+    "postinstall": "node util/init.js",
+    "publish": "node util/publish.js"
   },
   "husky": {
     "hooks": {
@@ -91,9 +91,9 @@
     "webpack-merge": "^4.2.1"
   },
   "bugs": {
-    "url": "https://github.com/vaadin-component-factory/--elementname--/issues"
+    "url": "https://github.com/vaadin-component-factory/vcf-element/issues"
   },
-  "homepage": "https://github.com/vaadin-component-factory/--elementname--#readme",
+  "homepage": "https://github.com/vaadin-component-factory/vcf-element#readme",
   "directories": {
     "test": "test"
   }

@@ -11,10 +11,10 @@ import { ThemableMixin } from '@vaadin/vaadin-themable-mixin';
 import { ElementMixin } from '@vaadin/vaadin-element-mixin';
 
 /**
- * `<--elementname-->` --elementdescription--
+ * `<vcf-element>` --elementdescription--
  *
  * ```html
- * <--elementname--></--elementname-->
+ * <vcf-element></vcf-element>
  * ```
  *
  * ### Styling
@@ -23,7 +23,7 @@ import { ElementMixin } from '@vaadin/vaadin-element-mixin';
  *
  * Custom property | Description | Default
  * ----------------|-------------|-------------
- * `----elementname---property` | Example custom property | `unset`
+ * `--vcf-element-property` | Example custom property | `unset`
  *
  * The following shadow DOM parts are available for styling:
  *
@@ -42,7 +42,7 @@ import { ElementMixin } from '@vaadin/vaadin-element-mixin';
  * @mixes ThemableMixin
  * @demo demo/index.html
  */
-class --elementclassname-- extends ElementMixin(ThemableMixin(PolymerElement)) {
+class VcfElement extends ElementMixin(ThemableMixin(PolymerElement)) {
   static get template() {
     return html`
       <style>
@@ -54,7 +54,11 @@ class --elementclassname-- extends ElementMixin(ThemableMixin(PolymerElement)) {
   }
 
   static get is() {
-    return '--elementname--';
+    return 'vcf-element';
+  }
+
+  static get version() {
+    return '0.1.0';
   }
 
   static get properties() {
@@ -62,13 +66,13 @@ class --elementclassname-- extends ElementMixin(ThemableMixin(PolymerElement)) {
   }
 }
 
-customElements.define(--elementclassname--.is, --elementclassname--);
+customElements.define(VcfElement.is, VcfElement);
 
 /**
  * @namespace Vaadin
  */
-window.Vaadin.--elementclassname-- = --elementclassname--;
+window.Vaadin.VcfElement = VcfElement;
 
 if (window.Vaadin.runIfDevelopmentMode) {
-  window.Vaadin.runIfDevelopmentMode('vaadin-license-checker', --elementclassname--);
+  window.Vaadin.runIfDevelopmentMode('vaadin-license-checker', VcfElement);
 }

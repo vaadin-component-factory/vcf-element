@@ -9,19 +9,11 @@ const colors = require('colors');
 const path = require('path');
 const { readFileSync, writeFileSync } = require('fs');
 
-const VCF = `
-____    ____  ______  _______ 
-\\   \\  /   / /      ||   ____|
- \\   \\/   / |  ,----'|  |__   
-  \\      /  |  |     |   __|  
-   \\    /   |  \`----.|  |     
-    \\__/     \\______||__|     
-                     
-`;
+const errorMessage = 'There was an error building the workspace';
 
 // Note: These should all be relative to the project root directory
-const rmDirs = ['.git'];
-const rmFiles = ['init.js'];
+const rmDirs = ['.git', '.vscode'];
+const rmFiles = ['util/init.js'];
 const modifyFiles = [
   'index.html',
   'README.md',
@@ -32,13 +24,14 @@ const modifyFiles = [
   'test/index.html',
   'test/vcf-element_test.html',
   'theme/lumo/vcf-element.js',
-  'theme/lumo/vcf-element-styles.js'
+  'theme/lumo/vcf-element-styles.js',
+  'util/publish.js'
 ];
 const renameFiles = [
-  ['src/vcf-element.js', 'src/--elementname--.js'],
-  ['test/vcf-element_test.html', 'test/--elementname--_test.html'],
-  ['theme/lumo/vcf-element.js', 'theme/lumo/--elementname--.js'],
-  ['theme/lumo/vcf-element-styles.js', 'theme/lumo/--elementname---styles.js']
+  ['src/vcf-element.js', 'src/vcf-element.js'],
+  ['test/vcf-element_test.html', 'test/vcf-element_test.html'],
+  ['theme/lumo/vcf-element.js', 'theme/lumo/vcf-element.js'],
+  ['theme/lumo/vcf-element-styles.js', 'theme/lumo/vcf-element-styles.js']
 ];
 
 const _promptSchemaElementName = {
@@ -66,7 +59,9 @@ const _promptSchemaElementDescription = {
 const _promptSchemaElementSuggest = {
   properties: {
     useSuggestedName: {
-      description: colors.cyan('Would you like it to be called "' + elementNameSuggested() + '"? [Yes/No]'),
+      description: colors.cyan(
+        'Would you like the web component to be called "' + elementNameSuggested() + '"? [Yes/No]'
+      ),
       pattern: /^(y(es)?|n(o)?)$/i,
       type: 'string',
       required: true,
@@ -78,7 +73,7 @@ const _promptSchemaElementSuggest = {
 const _promptSchemaRemoveGit = {
   properties: {
     removegit: {
-      description: colors.cyan('Would you like to reset the git history (delete and recreate .git)? [Yes/No]'),
+      description: colors.cyan('Would you like to clear the git history? [Yes/No]'),
       pattern: /^(y(es)?|n(o)?)$/i,
       type: 'string',
       required: true,
@@ -100,8 +95,7 @@ if (!which('git')) {
 }
 
 // Say hi!
-console.log(colors.blue(VCF));
-console.log(colors.cyan("Hi! You're almost ready to make the next great VCF web component."));
+console.log('Vaadin Component Factory' + colors.cyan(' }>\n'));
 
 // Generate the element name and start the tasks
 if (process.env.CI == null) {
@@ -122,7 +116,7 @@ if (process.env.CI == null) {
 function elementNameCreate() {
   _prompt.get(_promptSchemaElementName, (err, res) => {
     if (err) {
-      console.log(colors.red('Sorry, there was an error building the workspace :('));
+      console.log(colors.red(errorMessage));
       process.exit(1);
       return;
     }
@@ -137,7 +131,7 @@ function elementNameCreate() {
 function elementDescriptionCreate(elementname) {
   _prompt.get(_promptSchemaElementDescription, (err, res) => {
     if (err) {
-      console.log(colors.red('Sorry, there was an error building the workspace :('));
+      console.log(colors.red(errorMessage));
       process.exit(1);
       return;
     }
@@ -152,7 +146,7 @@ function elementDescriptionCreate(elementname) {
 function removeGitChoice(elementname, elementdescription) {
   _prompt.get(_promptSchemaRemoveGit, (err, res) => {
     if (err) {
-      console.log(colors.red('Sorry, there was an error building the workspace :('));
+      console.log(colors.red(errorMessage));
       process.exit(1);
       return;
     }
@@ -191,7 +185,7 @@ function elementNameSuggestedAccept() {
  */
 function elementNameSuggested() {
   return path
-    .basename(path.resolve(__dirname, '.'))
+    .basename(path.resolve(__dirname, '..'))
     .replace(/[^\w\d]|_/g, '-')
     .replace(/^-+|-+$/g, '')
     .toLowerCase();
@@ -214,7 +208,7 @@ function elementNameSuggestedIsDefault() {
  * @param elementname
  */
 function setupElement(elementname, elementdescription, removegit) {
-  console.log(colors.cyan('\nThanks for the info. The last few changes are being made... hang tight!\n\n'));
+  console.log(colors.cyan('\nThanks for the info. The last few changes are being made...\n\n'));
 
   // Get the Git username and email before the .git directory is removed
   let username = exec('git config user.name').stdout.trim();
@@ -228,7 +222,7 @@ function setupElement(elementname, elementdescription, removegit) {
 
   finalize(removegit);
 
-  console.log(colors.cyan("OK, you're all set. Happy coding!! ;)\n"));
+  console.log(colors.cyan("You're all set. Happy coding! :)\n"));
 }
 
 /**
@@ -243,7 +237,7 @@ function removeItems(removegit) {
   if (removegit) {
     rmItems = rmDirs.concat(rmFiles);
   }
-  rm('-rf', rmItems.map(f => path.resolve(__dirname, '.', f)));
+  rm('-rf', rmItems.map(f => path.resolve(__dirname, '..', f)));
   console.log(colors.red(rmItems.join('\n')));
 
   console.log('\n');
@@ -265,13 +259,13 @@ function modifyContents(elementname, elementdescription, username, usermail) {
     .map(c => c[0].toUpperCase() + c.slice(1))
     .join('');
 
-  const files = modifyFiles.map(f => path.resolve(__dirname, '.', f));
+  const files = modifyFiles.map(f => path.resolve(__dirname, '..', f));
   try {
     replace.sync({
       files,
       from: [
-        /--elementname--/g,
-        /--elementclassname--/g,
+        /vcf-element/g,
+        /VcfElement/g,
         /--elementdescription--/g,
         /--username--/g,
         /--usermail--/g,
@@ -299,8 +293,8 @@ function renameItems(elementname) {
   renameFiles.forEach(function(files) {
     // Files[0] is the current filename
     // Files[1] is the new name
-    const newFilename = files[1].replace(/--elementname--/g, elementname);
-    mv(path.resolve(__dirname, '.', files[0]), path.resolve(__dirname, '.', newFilename));
+    const newFilename = files[1].replace(/vcf-element/g, elementname);
+    mv(path.resolve(__dirname, '..', files[0]), path.resolve(__dirname, '..', newFilename));
     console.log(colors.cyan(files[0] + ' => ' + newFilename));
   });
 
@@ -315,14 +309,14 @@ function finalize(removegit) {
 
   // Recreate Git folder
   if (removegit) {
-    let gitInitOutput = exec('git init "' + path.resolve(__dirname, '.') + '"', {
+    let gitInitOutput = exec('git init "' + path.resolve(__dirname, '..') + '"', {
       silent: true
     }).stdout;
     console.log(colors.green(gitInitOutput.replace(/(\n|\r)+/g, '')));
   }
 
   // Remove post-install command
-  let jsonPackage = path.resolve(__dirname, '.', 'package.json');
+  let jsonPackage = path.resolve(__dirname, '..', 'package.json');
   const pkg = JSON.parse(readFileSync(jsonPackage));
 
   // Note: Add items to remove from the package file here
