@@ -27,7 +27,7 @@ npm i @vaadin-component-factory/vcf-element --save
 Once installed, import it in your application:
 
 ```js
-import '@vaadin-component-factory/vcf-element/vcf-element.js';
+import '@vaadin-component-factory/vcf-element';
 ```
 
 Add `<vcf-element>` element to the page.
