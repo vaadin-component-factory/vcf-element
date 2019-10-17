@@ -17,7 +17,7 @@ if (!version.match(semverRegex)) {
 
 const srcPath = path.resolve(__dirname, '../src/', 'vcf-element.js');
 let srcString = readFileSync(srcPath, 'utf8');
-const replaceRegex = /get version.*?'(\d.\d.\d)';/s;
+const replaceRegex = /get version.*?'(\d\.\d\.\d)';/s;
 const matches = replaceRegex.exec(srcString);
 srcString = srcString.replace(matches[0], matches[0].replace(matches[1], version));
 writeFileSync(srcPath, srcString);
