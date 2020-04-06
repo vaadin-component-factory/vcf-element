@@ -38,7 +38,7 @@ const _promptSchemaElementName = {
   properties: {
     element: {
       description: colors.cyan('What do you want the element to be called? (use kebab-case)'),
-      pattern: /^[a-z]+(\-[a-z]+)*$/,
+      pattern: /^[a-z][a-z0-9]*(\-[a-z0-9]+)*$/,
       type: 'string',
       required: true,
       message: '"kebab-case" uses lowercase letters, and hyphens for any punctuation'
