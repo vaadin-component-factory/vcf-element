@@ -7,32 +7,101 @@
     <script dev src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script dev type="module" src="demo.js"></script>
     <custom-style>
-      <style is="custom-style" include="demo-pages-shared-styles">
+      <style is="custom-style" include="demo-pages-shared-styles lumo-typography">
+        body {
+          background-color: var(--lumo-base-color);
+          padding: 0;
+        }
+        h1 {
+          padding: 0 0 var(--lumo-space-l) var(--lumo-space-m);
+        }
+        h2 {
+          padding: var(--lumo-space-l) 0 var(--lumo-space-l) var(--lumo-space-m);
+        }
+        vcf-anchor-nav {
+          opacity: 1;
+          transition: opacity 0.5s;
+          --_anchor-nav-inner-max-width: 1000px;
+        }
+        vcf-anchor-nav::part(tabs) {
+          box-shadow: inset 0 -1px 0 0 var(--lumo-contrast-20pct);
+        }
+        vcf-anchor-nav-section {
+          height: auto;
+          background-color: var(--lumo-base-color);
+        }
+        vaadin-button.nav {
+          cursor: pointer;
+        }
+        .hidden {
+          opacity: 0;
+        }
         .centered {
           max-width: 1000px;
         }
-        main {
-          opacity: 1;
-          transition: opacity 0.5s;
-        }
-        main.hidden {
-          opacity: 0;
+        .nav {
+          margin: var(--lumo-space-l) var(--lumo-space-m) var(--lumo-space-l) calc(var(--lumo-button-size) * -1 / 6);
         }
       </style>
     </custom-style>
     <script>
-      window.addEventListener('WebComponentsReady', () => document.querySelector('main').classList.remove('hidden'));
+      window.addEventListener('WebComponentsReady', () => {
+        document.querySelectorAll('.hidden').forEach(element => element.classList.remove('hidden'));
+      });
     </script>
   </head>
   <body>
-    <main class="vertical-section-container centered hidden">
-      <h4><a href="api/#/elements/Vaadin.VcfElement">API documentation ↗</a></h4>
-      <h3>Basic</h3>
-      <demo-snippet>
-        <template>
-          <vcf-element></vcf-element>
-        </template>
-      </demo-snippet>
-    </main>
+    <vcf-anchor-nav fullscreen class="hidden">
+      <a slot="header" href="/api/#/elements/Vaadin.VcfElement">
+        <vaadin-button theme="tertiary" class="nav hidden">
+          <iron-icon icon="lumo:angle-right" slot="suffix"></iron-icon>
+          API
+        </vaadin-button>
+      </a>
+
+      <h1 slot="header" class="hidden"><code>&lt;vcf-element&gt;</code></h1>
+
+      <vcf-anchor-nav-section name="Example 1">
+        <h2 slot="header" class="hidden">Example 1</h2>
+        <demo-snippet>
+          <template>
+            <vcf-element></vcf-element>
+            <script>
+              window.addEventListener('WebComponentsReady', () => {
+                // Example 1
+              });
+            </script>
+          </template>
+        </demo-snippet>
+      </vcf-anchor-nav-section>
+
+      <vcf-anchor-nav-section name="Example 2">
+        <h2 slot="header" class="hidden">Example 2</h2>
+        <demo-snippet>
+          <template>
+            <vcf-element></vcf-element>
+            <script>
+              window.addEventListener('WebComponentsReady', () => {
+                // Example 2
+              });
+            </script>
+          </template>
+        </demo-snippet>
+      </vcf-anchor-nav-section>
+
+      <vcf-anchor-nav-section name="Example 3">
+        <h2 slot="header" class="hidden">Example 3</h2>
+        <demo-snippet>
+          <template>
+            <vcf-element></vcf-element>
+            <script>
+              window.addEventListener('WebComponentsReady', () => {
+                // Example 3
+              });
+            </script>
+          </template>
+        </demo-snippet>
+      </vcf-anchor-nav-section>
+    </vcf-anchor-nav>
   </body>
 </html>

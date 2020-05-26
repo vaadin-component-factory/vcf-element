@@ -51,6 +51,7 @@ class VcfElement extends ElementMixin(ThemableMixin(PolymerElement)) {
           display: block;
         }
       </style>
+      <slot>vcf-element</slot>
     `;
   }
 
