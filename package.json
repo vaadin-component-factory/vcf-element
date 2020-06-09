@@ -1,8 +1,8 @@
 {
   "name": "@vaadin-component-factory/vcf-element",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "--elementdescription--",
-  "main": "theme/lumo/vcf-element.js",
+  "main": "src/vcf-element.js",
   "author": "Vaadin Ltd",
   "license": "https://raw.githubusercontent.com/vaadin/vaadin-incubator-element/master/LICENSE",
   "repository": {
@@ -55,7 +55,7 @@
     "@polymer/iron-component-page": "^4.0.1",
     "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
     "@polymer/test-fixture": "^4.0.2",
-    "@vaadin-component-factory/vcf-anchor-nav": "^0.2.6",
+    "@vaadin-component-factory/vcf-anchor-nav": "^1.0.1",
     "@vaadin/vaadin-button": "^2.3.0",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "babel-eslint": "^10.0.2",
@@ -96,6 +96,9 @@
   "bugs": {
     "url": "https://github.com/vaadin-component-factory/vcf-element/issues"
   },
+  "files": [
+    "src"
+  ],
   "homepage": "https://github.com/vaadin-component-factory/vcf-element#readme",
   "directories": {
     "test": "test"
