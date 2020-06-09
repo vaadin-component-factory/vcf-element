@@ -5,4 +5,4 @@ import '@vaadin/vaadin-button';
 import '@vaadin/vaadin-lumo-styles/icons';
 import '@vaadin/vaadin-lumo-styles/typography';
 import '@vaadin-component-factory/vcf-anchor-nav';
-import '../theme/lumo/vcf-element';
+import '../src/vcf-element';

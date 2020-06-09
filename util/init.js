@@ -23,15 +23,11 @@ const modifyFiles = [
   'src/vcf-element.js',
   'test/index.html',
   'test/vcf-element_test.html',
-  'theme/lumo/vcf-element.js',
-  'theme/lumo/vcf-element-styles.js',
   'util/publish.js'
 ];
 const renameFiles = [
   ['src/vcf-element.js', 'src/vcf-element.js'],
-  ['test/vcf-element_test.html', 'test/vcf-element_test.html'],
-  ['theme/lumo/vcf-element.js', 'theme/lumo/vcf-element.js'],
-  ['theme/lumo/vcf-element-styles.js', 'theme/lumo/vcf-element-styles.js']
+  ['test/vcf-element_test.html', 'test/vcf-element_test.html']
 ];
 
 const _promptSchemaElementName = {
