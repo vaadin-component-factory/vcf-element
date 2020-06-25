@@ -42,11 +42,28 @@
         .nav {
           margin: var(--lumo-space-l) var(--lumo-space-m) var(--lumo-space-l) calc(var(--lumo-button-size) * -1 / 6);
         }
+        code:not(.main) {
+          display: inline-block;
+          padding: 2px 4px;
+          background: var(--lumo-shade-10pct);
+          border-radius: var(--lumo-border-radius);
+        }
       </style>
     </custom-style>
     <script>
       window.addEventListener('WebComponentsReady', () => {
         document.querySelectorAll('.hidden').forEach(element => element.classList.remove('hidden'));
+        document.querySelectorAll('demo-snippet').forEach(element => {
+          const codeContainer = element.shadowRoot.querySelector('.code-container');
+          const copyButton = codeContainer.querySelector('#copyButton');
+          // Code Container max height
+          codeContainer.style.maxHeight = '400px';
+          // Sticky Copy Button
+          codeContainer.addEventListener('scroll', e => (copyButton.style.top = e.target.scrollTop + 'px'), {
+            capture: true,
+            passive: true
+          });
+        });
       });
     </script>
   </head>
@@ -59,7 +76,7 @@
         </vaadin-button>
       </a>
 
-      <h1 slot="header" class="hidden"><code>&lt;vcf-element&gt;</code></h1>
+      <h1 slot="header" class="hidden"><code class="main">&lt;vcf-element&gt;</code></h1>
 
       <vcf-anchor-nav-section name="Example 1">
         <h2 slot="header" class="hidden">Example 1</h2>
