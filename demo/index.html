@@ -57,7 +57,7 @@
           const codeContainer = element.shadowRoot.querySelector('.code-container');
           const copyButton = codeContainer.querySelector('#copyButton');
           // Code Container max height
-          codeContainer.style.maxHeight = '400px';
+          codeContainer.style.maxHeight = '600px';
           // Sticky Copy Button
           codeContainer.addEventListener('scroll', e => (copyButton.style.top = e.target.scrollTop + 'px'), {
             capture: true,

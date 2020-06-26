@@ -60,7 +60,7 @@ class VcfElement extends ElementMixin(ThemableMixin(PolymerElement)) {
   }
 
   static get version() {
-    return '0.1.0';
+    return '1.1.0';
   }
 
   static get properties() {
