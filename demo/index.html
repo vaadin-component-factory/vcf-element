@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" />
     <title>vcf-element demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
     <script dev src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script dev type="module" src="demo.js"></script>
     <custom-style>
@@ -49,23 +50,42 @@
           border-radius: var(--lumo-border-radius);
         }
       </style>
+      <style id="codeContainerStyles">
+        .code-container {
+          overflow-x: hidden;
+          overflow-y: scroll;
+        }
+        code:not(.main) {
+          font-family: 'Fira Code', monospace;
+        }
+        #copyButton {
+          display: none;
+        }
+        #copyVaadinButton {
+          position: absolute;
+          margin: 0;
+          top: -1px;
+          right: -1px;
+          text-transform: uppercase;
+          border: none;
+          border-radius: 0;
+          border-bottom-left-radius: var(--lumo-border-radius);
+          cursor: pointer;
+          background: #e0e0e0;
+          color: #333;
+          font-size: 12px;
+        }
+        .overflow:not(.top) {
+          box-shadow: inset 0 8px 10px -15px #000;
+        }
+        .overflow:not(.top):not(.bottom) {
+          box-shadow: inset 0 8px 10px -15px #000, inset 0 -12px 15px -20px #000;
+        }
+        .overflow:not(.bottom) {
+          box-shadow: inset 0 -12px 15px -20px #000;
+        }
+      </style>
     </custom-style>
-    <script>
-      window.addEventListener('WebComponentsReady', () => {
-        document.querySelectorAll('.hidden').forEach(element => element.classList.remove('hidden'));
-        document.querySelectorAll('demo-snippet').forEach(element => {
-          const codeContainer = element.shadowRoot.querySelector('.code-container');
-          const copyButton = codeContainer.querySelector('#copyButton');
-          // Code Container max height
-          codeContainer.style.maxHeight = '600px';
-          // Sticky Copy Button
-          codeContainer.addEventListener('scroll', e => (copyButton.style.top = e.target.scrollTop + 'px'), {
-            capture: true,
-            passive: true
-          });
-        });
-      });
-    </script>
   </head>
   <body>
     <vcf-anchor-nav fullscreen class="hidden">
