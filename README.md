@@ -51,9 +51,9 @@ Add `<vcf-element>` element to the page.
 
 This is the client-side (Polymer 3) web component. If you are looking for the server-side (Java) API for the Vaadin Platform, it can be found here: [VcfElement](https://vaadin.com/directory/component/VcfElement) -->
 
-## Vaadin Prime
+## Vaadin Pro
 
-This component is available in the Vaadin Prime subscription. It is still open source, but you need to have a valid CVAL license in order to use it. Read more at: [Pricing](https://vaadin.com/pricing)
+This component is available in the Vaadin Pro subscription. It is still open source, but you need to have a valid CVAL license in order to use it. Read more at: [Pricing](https://vaadin.com/pricing)
 
 ## License
 
