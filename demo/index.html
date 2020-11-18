@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="hidden">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" />
@@ -9,58 +9,75 @@
     <script dev type="module" src="demo.js"></script>
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles lumo-typography">
+        html {
+          opacity: 1;
+          transition: opacity 0.5s;
+        }
+
         body {
           background-color: var(--lumo-base-color);
           padding: 0;
         }
+
         h1 {
           padding: 0 0 var(--lumo-space-l) var(--lumo-space-m);
         }
+
         h2 {
           padding: var(--lumo-space-l) 0 var(--lumo-space-l) var(--lumo-space-m);
         }
+
         vcf-anchor-nav {
-          opacity: 1;
-          transition: opacity 0.5s;
-          --_anchor-nav-inner-max-width: 1000px;
+          --anchor-nav-inner-max-width: 1000px;
         }
+
         vcf-anchor-nav::part(tabs) {
           box-shadow: inset 0 -1px 0 0 var(--lumo-contrast-20pct);
         }
+
         vcf-anchor-nav-section {
           height: auto;
           background-color: var(--lumo-base-color);
         }
+
         vaadin-button.nav {
           cursor: pointer;
         }
+
         .hidden {
           opacity: 0;
         }
+
         .centered {
           max-width: 1000px;
         }
+
         .nav {
           margin: var(--lumo-space-l) var(--lumo-space-m) var(--lumo-space-l) calc(var(--lumo-button-size) * -1 / 6);
         }
+
         code:not(.main) {
           display: inline-block;
           padding: 2px 4px;
           background: var(--lumo-shade-10pct);
           border-radius: var(--lumo-border-radius);
         }
+
       </style>
       <style id="codeContainerStyles">
         .code-container {
           overflow-x: hidden;
           overflow-y: scroll;
         }
+
         code:not(.main) {
           font-family: 'Fira Code', monospace;
         }
+
         #copyButton {
           display: none;
         }
+
         #copyVaadinButton {
           position: absolute;
           margin: 0;
@@ -75,31 +92,33 @@
           color: #333;
           font-size: 12px;
         }
+
         .overflow:not(.top) {
           box-shadow: inset 0 8px 10px -15px #000;
         }
+
         .overflow:not(.top):not(.bottom) {
           box-shadow: inset 0 8px 10px -15px #000, inset 0 -12px 15px -20px #000;
         }
+
         .overflow:not(.bottom) {
           box-shadow: inset 0 -12px 15px -20px #000;
         }
+
       </style>
     </custom-style>
   </head>
   <body>
-    <vcf-anchor-nav fullscreen class="hidden">
+    <vcf-anchor-nav fullscreen theme="expand-last">
       <a slot="header" href="/api/#/elements/Vaadin.VcfElement">
-        <vaadin-button theme="tertiary" class="nav hidden">
+        <vaadin-button theme="tertiary" class="nav">
           <iron-icon icon="lumo:angle-right" slot="suffix"></iron-icon>
           API
         </vaadin-button>
       </a>
-
-      <h1 slot="header" class="hidden"><code class="main">&lt;vcf-element&gt;</code></h1>
-
+      <h1 slot="header"><code class="main">&lt;vcf-element&gt;</code></h1>
       <vcf-anchor-nav-section name="Example 1">
-        <h2 slot="header" class="hidden">Example 1</h2>
+        <h2 slot="header">Example 1</h2>
         <demo-snippet>
           <template>
             <vcf-element></vcf-element>
@@ -111,9 +130,8 @@
           </template>
         </demo-snippet>
       </vcf-anchor-nav-section>
-
       <vcf-anchor-nav-section name="Example 2">
-        <h2 slot="header" class="hidden">Example 2</h2>
+        <h2 slot="header">Example 2</h2>
         <demo-snippet>
           <template>
             <vcf-element></vcf-element>
@@ -125,9 +143,8 @@
           </template>
         </demo-snippet>
       </vcf-anchor-nav-section>
-
       <vcf-anchor-nav-section name="Example 3">
-        <h2 slot="header" class="hidden">Example 3</h2>
+        <h2 slot="header">Example 3</h2>
         <demo-snippet>
           <template>
             <vcf-element></vcf-element>

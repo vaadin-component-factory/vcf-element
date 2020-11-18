@@ -23,9 +23,9 @@
     "lint": "eslint src/*.js",
     "prestart": "polymer analyze src/*.js > analysis.json",
     "start": "polymer serve -o",
-    "build:prod": "run-s build:api build:demo",
+    "build": "run-s build:api build:demo",
     "build:api": "npm run prestart && polymer build",
-    "build:demo": "webpack",
+    "build:demo": "webpack --env production",
     "postinstall": "node util/init.js",
     "publish": "node util/publish.js"
   },

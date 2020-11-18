@@ -113,12 +113,7 @@ const productionConfig = merge([
     plugins: [
       new CopyWebpackPlugin([...polyfills, ...assets]),
       new HtmlWebpackPlugin({ template: INDEX_TEMPLATE }),
-      new HtmlReplaceWebpackPlugin([
-        {
-          pattern: /<script dev.*?src=".*?\.js".*?<\/script>/g,
-          replacement: ''
-        }
-      ]),
+      new HtmlReplaceWebpackPlugin([{ pattern: /<script dev.*?src=".*?\.js".*?<\/script>/g, replacement: '' }]),
       new HtmlWebpackTagsPlugin({ tags: ['vendor/webcomponents-bundle.js'], append: false }),
       new CompressionPlugin({ test: /\.js(\.map)?$/i }),
       new BrotliPlugin({
