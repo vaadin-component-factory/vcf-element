@@ -14,22 +14,37 @@
           padding: 0;
         }
 
-        h1 {
+        h1.main {
+          display: flex;
+          align-items: center;
           padding: 0 0 var(--lumo-space-l) var(--lumo-space-m);
         }
 
-        h2 {
+        h1.main:hover #javaApi a {
+          color: var(--lumo-primary-text-color);
+        }
+
+        h2.main {
           padding: var(--lumo-space-l) 0 var(--lumo-space-l) var(--lumo-space-m);
         }
 
+        code {
+          display: inline-block;
+          padding: 2px 4px;
+          background-color: var(--lumo-shade-10pct);
+          border-radius: var(--lumo-border-radius);
+          font-family: 'Fira Code', monospace;
+        }
+
         vcf-anchor-nav {
-          --anchor-nav-inner-max-width: 1000px;
           opacity: 1;
           transition: opacity 0.5s;
+          --anchor-nav-inner-max-width: 1000px;
         }
 
         vcf-anchor-nav::part(tabs) {
           box-shadow: inset 0 -1px 0 0 var(--lumo-contrast-20pct);
+          z-index: 2;
         }
 
         vcf-anchor-nav-section {
@@ -37,8 +52,43 @@
           background-color: var(--lumo-base-color);
         }
 
-        vaadin-button.nav {
-          cursor: pointer;
+        #elementName {
+          padding: 0;
+          border-radius: 0;
+          background-color: transparent;
+        }
+
+        #elementName span {
+          display: inline-block;
+          font-size: var(--lumo-size-m);
+          padding: var(--lumo-space-xs);
+          vertical-align: middle;
+        }
+
+        #javaApi {
+          margin: 0 var(--lumo-space-m) 0 auto;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        #javaApi code {
+          display: none;
+          font-size: var(--lumo-font-size-xxs);
+          margin-right: var(--lumo-space-m);
+          background: none;
+        }
+
+        #javaApi a {
+          color: var(--lumo-secondary-text-color);
+          transition: text-decoration 0.5s, color 0.5s;
+          font-family: var(--lumo-font-family);
+          font-weight: normal;
+          margin-right: var(--lumo-space-m);
+          text-decoration: none;
+        }
+
+        #javaApi a:hover {
+          text-decoration: underline;
         }
 
         .hidden,
@@ -50,28 +100,35 @@
           max-width: 1000px;
         }
 
-        .nav {
+        .nav-btn {
           margin: var(--lumo-space-l) var(--lumo-space-m) var(--lumo-space-l) calc(var(--lumo-button-size) * -1 / 6);
+          cursor: pointer;
         }
 
-        code:not(.main) {
-          display: inline-block;
-          padding: 2px 4px;
-          background: var(--lumo-shade-10pct);
-          border-radius: var(--lumo-border-radius);
+        @media only screen and (max-width: 768px) {
+          h1.main {
+            align-items: flex-start;
+            flex-direction: column;
+            margin-top: 0;
+          }
+
+          #elementName,
+          #elementName span {
+            font-size: var(--lumo-font-size-xl);
+          }
+
+          #javaApi {
+            margin: 0;
+            font-size: var(--lumo-font-size-xs);
+          }
+
+          #javaApi code {
+            display: inline-block;
+          }
         }
 
       </style>
       <style id="codeContainerStyles">
-        .code-container {
-          overflow-x: hidden;
-          overflow-y: scroll;
-        }
-
-        code:not(.main) {
-          font-family: 'Fira Code', monospace;
-        }
-
         #copyButton {
           display: none;
         }
@@ -91,16 +148,14 @@
           font-size: 12px;
         }
 
-        .overflow:not(.top) {
-          box-shadow: inset 0 8px 10px -15px #000;
+        .code-container {
+          overflow-x: hidden;
+          overflow-y: scroll;
         }
 
-        .overflow:not(.top):not(.bottom) {
-          box-shadow: inset 0 8px 10px -15px #000, inset 0 -12px 15px -20px #000;
-        }
-
-        .overflow:not(.bottom) {
-          box-shadow: inset 0 -12px 15px -20px #000;
+        .code code:not(.main) {
+          font-family: 'Fira Code', monospace;
+          font-size: 12px;
         }
 
       </style>
@@ -109,12 +164,18 @@
   <body>
     <vcf-anchor-nav fullscreen theme="expand-last" class="hidden">
       <a slot="header" href="/api/#/elements/Vaadin.VcfElement">
-        <vaadin-button theme="tertiary" class="nav">
+        <vaadin-button theme="tertiary" class="nav-btn">
           <iron-icon icon="lumo:angle-right" slot="suffix"></iron-icon>
           API
         </vaadin-button>
       </a>
-      <h1 slot="header"><code class="main">&lt;vcf-element&gt;</code></h1>
+      <h1 slot="header" class="main">
+        <code id="elementName"><span>&lt;</span>vcf-element<span>&gt;</span></code>
+        <span id="javaApi">
+          <code>-></code>
+          <a href="https://vaadin.com/directory/component/VcfElement" title="The server-side (Java) API of this web component for the Vaadin Platform">VcfElement</a>
+        </span>
+      </h1>
       <vcf-anchor-nav-section name="Example 1">
         <h2 slot="header">Example 1</h2>
         <demo-snippet>
