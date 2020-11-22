@@ -18,6 +18,7 @@
           display: flex;
           align-items: center;
           padding: 0 0 var(--lumo-space-l) var(--lumo-space-m);
+          margin-top: var(--lumo-space-xl);
         }
 
         h1.main:hover #javaApi a {
@@ -36,6 +37,18 @@
           font-family: 'Fira Code', monospace;
         }
 
+        api-viewer {
+          max-width: 1000px;
+          padding: 0;
+          margin: 0 var(--lumo-space-m) calc(2 * var(--lumo-space-l)) var(--lumo-space-m);
+        }
+
+        api-viewer::part(header-title),
+        api-viewer::part(md-code) {
+          font-family: 'Fira Code', monospace;
+          font-weight: bold;
+        }
+
         vcf-anchor-nav {
           opacity: 1;
           transition: opacity 0.5s;
@@ -50,6 +63,10 @@
         vcf-anchor-nav-section {
           height: auto;
           background-color: var(--lumo-base-color);
+        }
+
+        vcf-anchor-nav-section[name="API"]::part(header) {
+          display: none;
         }
 
         #elementName {
@@ -100,16 +117,10 @@
           max-width: 1000px;
         }
 
-        .nav-btn {
-          margin: var(--lumo-space-l) var(--lumo-space-m) var(--lumo-space-l) calc(var(--lumo-button-size) * -1 / 6);
-          cursor: pointer;
-        }
-
         @media only screen and (max-width: 768px) {
           h1.main {
             align-items: flex-start;
             flex-direction: column;
-            margin-top: 0;
           }
 
           #elementName,
@@ -163,19 +174,14 @@
   </head>
   <body>
     <vcf-anchor-nav fullscreen theme="expand-last" class="hidden">
-      <a slot="header" href="/api/#/elements/Vaadin.VcfElement">
-        <vaadin-button theme="tertiary" class="nav-btn">
-          <iron-icon icon="lumo:angle-right" slot="suffix"></iron-icon>
-          API
-        </vaadin-button>
-      </a>
       <h1 slot="header" class="main">
         <code id="elementName"><span>&lt;</span>vcf-element<span>&gt;</span></code>
         <span id="javaApi">
           <code>-></code>
-          <a href="https://vaadin.com/directory/component/VcfElement" title="The server-side (Java) API of this web component for the Vaadin Platform">VcfElement</a>
+          <a href="https://vaadin.com/directory/component/VcfElement" title="The server-side (Java) API of this web component for the Vaadin Platform">VcfElement ↗</a>
         </span>
       </h1>
+      <api-viewer slot="header" src="custom-elements.json" exclude-knobs="styles"></api-viewer>
       <vcf-anchor-nav-section name="Example 1">
         <h2 slot="header">Example 1</h2>
         <demo-snippet>

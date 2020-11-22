@@ -1,6 +1,27 @@
+## editors
+/.idea
+/.vscode
+
+## system files
+.DS_Store
+
+## npm
 /node_modules/
+/npm-debug.log
+
+## testing
+/coverage/
+
+## temp folders
+/.tmp/
+
+# build
+/_site/
 /dist/
-/build/
-package-lock.json
-analysis.json
-/next/
+/out-tsc/
+/src-js/
+
+# dev
+/test-element/
+/legacy/
+custom-elements.json

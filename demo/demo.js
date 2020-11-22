@@ -5,7 +5,8 @@ import '@vaadin/vaadin-button';
 import '@vaadin/vaadin-lumo-styles/icons';
 import '@vaadin/vaadin-lumo-styles/typography';
 import '@vaadin-component-factory/vcf-anchor-nav';
-import '../src/vcf-element';
+import 'api-viewer-element';
+import '../dist/vcf-element';
 import './demo-icons';
 
 window.addEventListener('WebComponentsReady', () => {
