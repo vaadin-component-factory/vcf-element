@@ -1,45 +1,44 @@
-import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
-import '@polymer/iron-demo-helpers/demo-snippet';
-import '@polymer/iron-icon';
-import '@vaadin/vaadin-button';
-import '@vaadin/vaadin-lumo-styles/icons';
-import '@vaadin/vaadin-lumo-styles/typography';
+import '@vaadin/vaadin-lumo-styles';
 import '@vaadin-component-factory/vcf-anchor-nav';
-import 'api-viewer-element';
-import '../dist/vcf-element';
-import './demo-icons';
+import 'api-viewer-element/lib/api-docs.js';
+import 'api-viewer-element/lib/api-demo.js';
+import '../dist/vcf-element.js';
+
+const show = () => document.querySelectorAll('.hidden').forEach(element => element.classList.remove('hidden'));
 
 window.addEventListener('WebComponentsReady', () => {
-  const mainCodeContainerStyles = document.querySelector('#codeContainerStyles');
-  document.querySelectorAll('.hidden').forEach(element => element.classList.remove('hidden'));
-  document.querySelectorAll('demo-snippet').forEach(element => {
-    const codeContainer = element.shadowRoot.querySelector('.code-container');
-    const code = codeContainer.querySelector('#code');
-    const copyButton = codeContainer.querySelector('#copyButton');
-    if (window.innerWidth > 768) {
-      const codeContainerStyles = document.createElement('style');
-      const copyVaadinButton = document.createElement('vaadin-button');
-      const copyIcon = document.createElement('iron-icon');
-      // Custom <demo-snippet> styles
-      element.shadowRoot.appendChild(codeContainerStyles);
-      codeContainerStyles.innerHTML = mainCodeContainerStyles.innerHTML;
-      // Custom <demo-snippet> Copy <vaadin-button>
-      copyVaadinButton.id = 'copyVaadinButton';
-      copyVaadinButton.setAttribute('theme', 'icon');
-      copyVaadinButton.setAttribute('title', 'Copy to clipboard');
-      copyVaadinButton.appendChild(copyIcon);
-      copyVaadinButton.addEventListener('click', () => {
-        document
-          .querySelectorAll('demo-snippet')
-          .forEach(element => element.shadowRoot.querySelector('iron-icon').setAttribute('icon', 'vcf-demo:copy'));
-        copyButton.click();
-        copyIcon.setAttribute('icon', 'lumo:checkmark');
-      });
-      copyIcon.setAttribute('icon', 'vcf-demo:copy');
-      codeContainer.appendChild(copyVaadinButton);
-    } else {
-      code.innerHTML = 'View demo code on a larger screen';
-      copyButton.style.display = 'none';
-    }
+  const anchorNav = document.querySelector('vcf-anchor-nav');
+  const apiDemos = document.querySelectorAll('api-demo');
+  // Observe <api-viewer> shadowRoot until <api-viewer-tabs> is added
+  apiDemos.forEach(apiDemo => {
+    new MutationObserver((mutationsList, observer) => {
+      for (const mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+          const apiViewerTabs = Array.from(mutation.addedNodes).filter(i => {
+            return i.nodeType === 1 && i.tagName.toLowerCase() === 'api-viewer-tabs';
+          })[0];
+          if (apiViewerTabs) {
+            const demoSnippet = apiViewerTabs.querySelector('api-viewer-demo-snippet');
+            if (demoSnippet) {
+              // Observe <api-viewer-demo-snippet> shadowRoot until <pre> is added
+              new MutationObserver((mutationsList, observer) => {
+                for (const mutation of mutationsList) {
+                  if (mutation.type === 'childList') {
+                    const pre = demoSnippet.shadowRoot.querySelector('pre');
+                    if (pre) pre.style.fontFamily = "'Fira Code', monospace";
+                    anchorNav._scrollToHash();
+                    observer.disconnect();
+                    show();
+                    return;
+                  }
+                }
+              }).observe(demoSnippet.shadowRoot, { childList: true });
+              observer.disconnect();
+              break;
+            }
+          }
+        }
+      }
+    }).observe(apiDemo.shadowRoot, { childList: true, subtree: true });
   });
 });

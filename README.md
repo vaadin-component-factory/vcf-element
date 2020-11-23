@@ -5,7 +5,7 @@
 **Run `npm install` and follow the prompts to setup the workspace.**
 
 <!--
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/vaadin/web-components?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![npm version](https://badgen.net/npm/v/@vaadin-component-factory/vcf-element)](https://www.npmjs.com/package/@vaadin-component-factory/vcf-element) [![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/vaadin-component-factoryvcf-element)
+[![npm version](https://badgen.net/npm/v/@vaadin-component-factory/vcf-element)](https://www.npmjs.com/package/@vaadin-component-factory/vcf-element) [![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/vaadin-component-factoryvcf-element)
 
 --elementdescription--
 -->
@@ -56,4 +56,4 @@ This is the client-side (Polymer 3) web component. If you are looking for the se
 
 ## License
 
-Apache License 2.0
+Apache-2.0 License

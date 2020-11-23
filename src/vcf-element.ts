@@ -1,4 +1,5 @@
-import { html, css, property, customElement, LitElement } from 'lit-element';
+import { html, css, property, customElement } from 'lit-element';
+import { VaadinElement } from '@vaadin/element-base';
 
 /**
  * `<vcf-element>` --elementdescription--
@@ -12,8 +13,10 @@ import { html, css, property, customElement, LitElement } from 'lit-element';
  * @event custom-event - Custom event description.
  */
 @customElement('vcf-element')
-export class VcfElement extends LitElement {
-  static is = 'vcf-element';
+export class VcfElement extends VaadinElement {
+  static get is() {
+    return 'vcf-element';
+  }
 
   static get version() {
     return '1.0.0';

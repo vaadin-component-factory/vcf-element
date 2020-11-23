@@ -1,1 +1,1 @@
-export { VcfElement } from './src/VcfElement.js';
+export { VcfElement } from './src/vcf-element.js';

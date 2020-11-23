@@ -10,7 +10,7 @@
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles lumo-typography">
         body {
-          background-color: var(--lumo-base-color);
+          font-family: var(--lumo-font-family);
           padding: 0;
         }
 
@@ -25,10 +25,6 @@
           color: var(--lumo-primary-text-color);
         }
 
-        h2.main {
-          padding: var(--lumo-space-l) 0 var(--lumo-space-l) var(--lumo-space-m);
-        }
-
         code {
           display: inline-block;
           padding: 2px 4px;
@@ -37,16 +33,31 @@
           font-family: 'Fira Code', monospace;
         }
 
-        api-viewer {
+        api-docs,
+        api-demo {
           max-width: 1000px;
           padding: 0;
           margin: 0 var(--lumo-space-m) calc(2 * var(--lumo-space-l)) var(--lumo-space-m);
         }
 
-        api-viewer::part(header-title),
-        api-viewer::part(md-code) {
+        api-docs::part(header-title),
+        api-demo::part(header-title),
+        api-docs::part(md-code),
+        api-demo::part(md-code) {
           font-family: 'Fira Code', monospace;
           font-weight: bold;
+        }
+
+        api-demo {
+          margin: 0;
+        }
+
+        api-demo::part(header) {
+          display: none;
+        }
+
+        api-demo::part(demo-output) {
+          border-top: none;
         }
 
         vcf-anchor-nav {
@@ -65,10 +76,6 @@
           background-color: var(--lumo-base-color);
         }
 
-        vcf-anchor-nav-section[name="API"]::part(header) {
-          display: none;
-        }
-
         #elementName {
           padding: 0;
           border-radius: 0;
@@ -83,14 +90,15 @@
         }
 
         #javaApi {
-          margin: 0 var(--lumo-space-m) 0 auto;
+          font-size: var(--lumo-font-size-m);
+          margin: 0 0 0 auto;
           display: inline-flex;
           align-items: center;
         }
 
         #javaApi code {
-          display: none;
-          font-size: var(--lumo-font-size-xxs);
+          display: inline-block;
+          font-size: var(--lumo-font-size-m);
           margin-right: var(--lumo-space-m);
           background: none;
         }
@@ -113,10 +121,6 @@
           opacity: 0;
         }
 
-        .centered {
-          max-width: 1000px;
-        }
-
         @media only screen and (max-width: 768px) {
           h1.main {
             align-items: flex-start;
@@ -134,39 +138,8 @@
           }
 
           #javaApi code {
-            display: inline-block;
+            font-size: var(--lumo-font-size-xxs);
           }
-        }
-
-      </style>
-      <style id="codeContainerStyles">
-        #copyButton {
-          display: none;
-        }
-
-        #copyVaadinButton {
-          position: absolute;
-          margin: 0;
-          top: -1px;
-          right: -1px;
-          text-transform: uppercase;
-          border: none;
-          border-radius: 0;
-          border-bottom-left-radius: var(--lumo-border-radius);
-          cursor: pointer;
-          background: #e0e0e0;
-          color: #333;
-          font-size: 12px;
-        }
-
-        .code-container {
-          overflow-x: hidden;
-          overflow-y: scroll;
-        }
-
-        .code code:not(.main) {
-          font-family: 'Fira Code', monospace;
-          font-size: 12px;
         }
 
       </style>
@@ -178,48 +151,18 @@
         <code id="elementName"><span>&lt;</span>vcf-element<span>&gt;</span></code>
         <span id="javaApi">
           <code>-></code>
-          <a href="https://vaadin.com/directory/component/VcfElement" title="The server-side (Java) API of this web component for the Vaadin Platform">VcfElement ↗</a>
+          <a href="https://vaadin.com/directory/component/VcfElement" title="The server-side (Java) API of this web component for the Vaadin Platform">VcfElement</a>
         </span>
       </h1>
-      <api-viewer slot="header" src="custom-elements.json" exclude-knobs="styles"></api-viewer>
-      <vcf-anchor-nav-section name="Example 1">
-        <h2 slot="header">Example 1</h2>
-        <demo-snippet>
-          <template>
-            <vcf-element></vcf-element>
-            <script>
-              window.addEventListener('WebComponentsReady', () => {
-                // Example 1
-              });
-            </script>
-          </template>
-        </demo-snippet>
+      <api-docs id="API" slot="header" src="custom-elements.json"></api-docs>
+      <vcf-anchor-nav-section name="Demo 1">
+        <api-demo src="custom-elements.json"></api-demo>
       </vcf-anchor-nav-section>
-      <vcf-anchor-nav-section name="Example 2">
-        <h2 slot="header">Example 2</h2>
-        <demo-snippet>
-          <template>
-            <vcf-element></vcf-element>
-            <script>
-              window.addEventListener('WebComponentsReady', () => {
-                // Example 2
-              });
-            </script>
-          </template>
-        </demo-snippet>
+      <vcf-anchor-nav-section name="Demo 2">
+        <api-demo src="custom-elements.json"></api-demo>
       </vcf-anchor-nav-section>
-      <vcf-anchor-nav-section name="Example 3">
-        <h2 slot="header">Example 3</h2>
-        <demo-snippet>
-          <template>
-            <vcf-element></vcf-element>
-            <script>
-              window.addEventListener('WebComponentsReady', () => {
-                // Example 3
-              });
-            </script>
-          </template>
-        </demo-snippet>
+      <vcf-anchor-nav-section name="Demo 3">
+        <api-demo src="custom-elements.json"></api-demo>
       </vcf-anchor-nav-section>
     </vcf-anchor-nav>
   </body>
