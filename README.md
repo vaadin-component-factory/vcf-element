@@ -56,4 +56,4 @@ This is the client-side (Polymer 3) web component. If you are looking for the se
 
 ## License
 
-Apache-2.0 License
+Apache License 2.0
