@@ -49,7 +49,7 @@
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.20.0",
     "@vaadin-component-factory/vcf-anchor-nav": "^1.1.0",
-    "@vaadin-component-factory/vcf-element-util": "^0.1.4",
+    "@vaadin-component-factory/vcf-element-util": "0.2.1-beta",
     "@web/dev-server": "^0.0.12",
     "@web/test-runner": "^0.7.41",
     "@webcomponents/webcomponentsjs": "^2.0.0",
