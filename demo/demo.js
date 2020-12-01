@@ -9,6 +9,10 @@ const show = () => document.querySelectorAll('.hidden').forEach(element => eleme
 window.addEventListener('WebComponentsReady', () => {
   const anchorNav = document.querySelector('vcf-anchor-nav');
   const apiDemos = document.querySelectorAll('api-demo');
+  const apiDocs = document.querySelector('api-docs');
+  fetch('./custom-elements.json')
+    .then(res => res.json())
+    .then(data => [apiDocs, ...apiDemos].forEach(elem => (elem.elements = data.tags)));
   // Observe <api-viewer> shadowRoot until <api-viewer-tabs> is added
   apiDemos.forEach(apiDemo => {
     new MutationObserver((mutationsList, observer) => {
