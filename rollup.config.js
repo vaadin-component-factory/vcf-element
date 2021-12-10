@@ -3,8 +3,17 @@ import { createSpaConfig } from '@open-wc/building-rollup';
 import copy from 'rollup-plugin-copy';
 
 const baseConfig = createSpaConfig({
+  outputDir: 'build',
   developmentMode: process.env.ROLLUP_WATCH === 'true',
-  injectServiceWorker: false
+  injectServiceWorker: false,
+  html: {
+    transform: html => {
+      return html.replace(
+        '../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js',
+        'webcomponents-loader.js'
+      );
+    }
+  }
 });
 
 export default merge(baseConfig, {
@@ -14,7 +23,7 @@ export default merge(baseConfig, {
       targets: [
         { src: ['demo/favicon.ico'], dest: 'build' },
         {
-          src: 'node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js',
+          src: 'node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js',
           dest: 'build'
         }
       ]
