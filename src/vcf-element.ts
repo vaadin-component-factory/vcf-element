@@ -1,5 +1,7 @@
-import { html, css, property, customElement } from 'lit-element';
-import { VaadinElement } from '@vaadin/element-base';
+import { html, css, LitElement } from 'lit';
+import { property } from 'lit/decorators.js';
+import { ThemableMixin } from '@vaadin/vaadin-themable-mixin';
+import '@vaadin/vaadin-lumo-styles';
 
 /**
  * `<vcf-element>` --elementdescription--
@@ -10,10 +12,11 @@ import { VaadinElement } from '@vaadin/element-base';
  *
  * @csspart element-part - Element part description.
  *
+ * @cssprop --vcf-element-text-color - CSS custom property description.
+ *
  * @event custom-event - Custom event description.
  */
-@customElement('vcf-element')
-export class VcfElement extends VaadinElement {
+export class VcfElement extends ThemableMixin(LitElement) {
   static get is() {
     return 'vcf-element';
   }
@@ -53,3 +56,5 @@ declare global {
     'vcf-element': VcfElement;
   }
 }
+
+customElements.define('vcf-element', VcfElement);
