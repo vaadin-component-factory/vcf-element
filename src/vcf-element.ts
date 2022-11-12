@@ -1,5 +1,5 @@
 import { html, css, LitElement } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property, customElement } from 'lit/decorators.js';
 import { ThemableMixin } from '@vaadin/vaadin-themable-mixin';
 import '@vaadin/vaadin-lumo-styles';
 
@@ -12,22 +12,23 @@ import '@vaadin/vaadin-lumo-styles';
  *
  * @csspart element-part - Element part description.
  *
- * @cssprop --vcf-element-text-color - CSS custom property description.
+ * @cssprop [--vcf-element-text-color=#000] - CSS custom property description.
  *
  * @event custom-event - Custom event description.
  */
+@customElement('vcf-element')
 export class VcfElement extends ThemableMixin(LitElement) {
-  static get is() {
-    return 'vcf-element';
-  }
-
-  static get version() {
-    return '1.0.0';
-  }
-
   @property({ type: String }) title = 'Hey there';
 
   @property({ type: Number }) counter = 5;
+
+  protected static get is() {
+    return 'vcf-element';
+  }
+
+  protected static get version() {
+    return '1.0.0';
+  }
 
   static get styles() {
     return css`
@@ -43,6 +44,7 @@ export class VcfElement extends ThemableMixin(LitElement) {
     return html`
       <h2>${this.title} #${this.counter}!</h2>
       <button @click=${this.increment}>increment</button>
+      <slot name="element-slot"></slot>
     `;
   }
 
@@ -56,5 +58,3 @@ declare global {
     'vcf-element': VcfElement;
   }
 }
-
-customElements.define('vcf-element', VcfElement);

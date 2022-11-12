@@ -2,7 +2,7 @@ import '@vaadin/vaadin-lumo-styles';
 import '@vaadin-component-factory/vcf-anchor-nav';
 import '@api-viewer/docs';
 import '@api-viewer/demo';
-import '../dist/src/vcf-element.js';
+import '../out-tsc/vcf-element.js';
 
 const show = () => document.querySelectorAll('.hidden').forEach(element => element.classList.remove('hidden'));
 

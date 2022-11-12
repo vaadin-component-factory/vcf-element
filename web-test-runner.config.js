@@ -6,7 +6,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
 
   /** Resolve bare module imports */
   nodeResolve: {
-    exportConditions: ['browser', 'development']
+    exportConditions: ['browser', 'development'],
   },
 
   /** Filter out lit dev mode logs */
@@ -17,5 +17,5 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
       }
     }
     return true;
-  }
+  },
 });

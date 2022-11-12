@@ -1,5 +1,5 @@
-import merge from 'deepmerge';
 import { createSpaConfig } from '@open-wc/building-rollup';
+import merge from 'deepmerge';
 import copy from 'rollup-plugin-copy';
 
 const baseConfig = createSpaConfig({
@@ -8,12 +8,9 @@ const baseConfig = createSpaConfig({
   injectServiceWorker: false,
   html: {
     transform: html => {
-      return html.replace(
-        '../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js',
-        'webcomponents-loader.js'
-      );
-    }
-  }
+      html.replace('../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js', 'webcomponents-loader.js');
+    },
+  },
 });
 
 export default merge(baseConfig, {
@@ -22,11 +19,9 @@ export default merge(baseConfig, {
     copy({
       targets: [
         { src: ['demo/favicon.ico'], dest: 'build' },
-        {
-          src: 'node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js',
-          dest: 'build'
-        }
-      ]
-    })
-  ]
+        { src: ['demo/custom-elements.json'], dest: 'build' },
+        { src: 'node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js', dest: 'build' },
+      ],
+    }),
+  ],
 });

@@ -24,5 +24,6 @@
 # dev
 /test-element/
 /legacy/
+/build/
 custom-elements.json
 analysis.json

@@ -1,5 +1,7 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { fixture, expect } from '@open-wc/testing';
+import { html } from 'lit/static-html.js';
 import { VcfElement } from '../src/vcf-element.js';
+import '../vcf-element.js';
 
 describe('VcfElement', () => {
   it('has a default title "Hey there" and counter 5', async () => {
@@ -11,6 +13,7 @@ describe('VcfElement', () => {
 
   it('increases the counter on button click', async () => {
     const el: VcfElement = await fixture(html`<vcf-element></vcf-element>`);
+
     el.shadowRoot!.querySelector('button')!.click();
 
     expect(el.counter).to.equal(6);

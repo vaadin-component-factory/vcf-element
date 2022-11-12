@@ -2,7 +2,7 @@
 
 **NOTE: This is a template for creating LitElement based web components with TypeScript.**
 
-**Run `npm install` and follow the prompts to setup the workspace.**
+**Run [`yarn`](https://yarnpkg.com/getting-started/install) and follow the prompts to setup the workspace.**
 
 <!--
 [![npm version](https://badgen.net/npm/v/@vaadin-component-factory/vcf-element)](https://www.npmjs.com/package/@vaadin-component-factory/vcf-element) [![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/vaadin-component-factoryvcf-element)
@@ -42,11 +42,11 @@ Add `<vcf-element>` element to the page.
 
 1. Fork the `vcf-element` repository and clone it locally.
 
-1. Make sure you have [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed.
+1. Make sure you have [yarn](https://yarnpkg.com/getting-started/install) installed.
 
-1. When in the `vcf-element` directory, run `npm install` to install dependencies.
+1. When in the `vcf-element` directory, run `yarn` to install dependencies.
 
-1. Run `npm start` to open the demo.
+1. Run `yarn start` to open the demo.
 
 <!--
 ## Server-side API
