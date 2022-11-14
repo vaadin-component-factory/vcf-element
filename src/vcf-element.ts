@@ -1,12 +1,9 @@
 import { html, css, LitElement } from 'lit';
 import { property, customElement } from 'lit/decorators.js';
-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin';
-import '@vaadin/vaadin-lumo-styles';
+import { CounterChangedEvent, CustomEventMixin, CustomEvents } from './mixins/CustomEventMixin.js';
 
 /**
  * `<vcf-element>` --elementdescription--
- *
- * @attr element-attr - Attribute description.
  *
  * @slot element-slot - Slot description.
  *
@@ -14,13 +11,13 @@ import '@vaadin/vaadin-lumo-styles';
  *
  * @cssprop [--vcf-element-text-color=#000] - CSS custom property description.
  *
- * @event custom-event - Custom event description.
+ * @event {CounterChangedEvent} counter-changed - Fired when the counter is changed.
  */
 @customElement('vcf-element')
-export class VcfElement extends ThemableMixin(LitElement) {
+export class VcfElement extends CustomEventMixin(LitElement) {
   @property({ type: String }) title = 'Hey there';
 
-  @property({ type: Number }) counter = 5;
+  @property({ type: Number, attribute: 'element-attr' }) counter = 0;
 
   protected static get is() {
     return 'vcf-element';
@@ -42,16 +39,28 @@ export class VcfElement extends ThemableMixin(LitElement) {
 
   render() {
     return html`
-      <h2>${this.title} #${this.counter}!</h2>
+      <h2 part="element-part">${this.title} #${this.counter}!</h2>
+      <h4><slot name="element-slot"></slot></button></h4>
       <button @click=${this.increment}>increment</button>
-      <slot name="element-slot"></slot>
     `;
   }
 
-  private increment() {
+  /**
+   * Increments the `counter` property.
+   * @see {@link counter}
+   */
+  increment() {
     this.counter += 1;
+    this.dispatchEvent(this.counterChangedEvent);
+  }
+
+  private get counterChangedEvent() {
+    const event = new CustomEvent(CustomEvents.counterChanged, { detail: { counter: this.counter } });
+    return event as CounterChangedEvent;
   }
 }
+
+export { CounterChangedEvent };
 
 declare global {
   interface HTMLElementTagNameMap {

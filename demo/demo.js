@@ -4,19 +4,22 @@ import '@api-viewer/docs';
 import '@api-viewer/demo';
 import '../out-tsc/vcf-element.js';
 
-const show = () => document.querySelectorAll('.hidden').forEach(element => element.classList.remove('hidden'));
+const show = () => {
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.hidden').forEach(element => element.classList.remove('hidden'));
+    document.querySelector('vcf-anchor-nav')._scrollToHash();
+  });
+};
 
 window.addEventListener('WebComponentsReady', () => {
   const customElements = './custom-elements.json';
-  const anchorNav = document.querySelector('vcf-anchor-nav');
   const apiDemos = document.querySelectorAll('api-demo');
   const apiDocs = document.querySelector('api-docs');
 
   fetch(customElements)
     .then(res => res.json())
-    .then(() => {
-      [apiDocs, ...apiDemos].forEach(elem => elem.setAttribute('src', customElements));
-      anchorNav._scrollToHash();
+    .then(manifest => {
+      [apiDocs, ...apiDemos].forEach(elem => (elem.manifest = manifest));
       show();
     });
 });

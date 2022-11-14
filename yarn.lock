@@ -1559,9 +1559,9 @@
     smoothscroll-polyfill "^0.4.4"
     stickyfilljs "^2.1.0"
 
-"@vaadin-component-factory/vcf-element-util@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@vaadin-component-factory/vcf-element-util/-/vcf-element-util-0.3.0.tgz#1afede8a86b9b91186ba03a76ede24207a2f71d6"
+"@vaadin-component-factory/vcf-element-util@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@vaadin-component-factory/vcf-element-util/-/vcf-element-util-0.3.2.tgz#2e83acb3f769153f9630ac26bcd5da77d680243f"
   dependencies:
     chalk "^4.1.2"
     inquirer "^9.1.4"
@@ -1640,7 +1640,7 @@
     "@polymer/polymer" "^3.0.0"
     "@vaadin/vaadin-themable-mixin" "~23.2.8"
 
-"@vaadin/vaadin-themable-mixin@^23.2.4", "@vaadin/vaadin-themable-mixin@^23.2.8", "@vaadin/vaadin-themable-mixin@~23.2.8":
+"@vaadin/vaadin-themable-mixin@^23.2.4", "@vaadin/vaadin-themable-mixin@~23.2.8":
   version "23.2.8"
   resolved "https://registry.yarnpkg.com/@vaadin/vaadin-themable-mixin/-/vaadin-themable-mixin-23.2.8.tgz#7ae96c4a20ea9b82ee04386028d21848caecb528"
   dependencies:
@@ -1908,8 +1908,8 @@ ajv@^6.10.0, ajv@^6.12.4:
     uri-js "^4.2.2"
 
 ajv@^8.0.1, ajv@^8.6.0:
-  version "8.11.0"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.11.0.tgz#977e91dd96ca669f54a11e23e378e33b884a565f"
+  version "8.11.2"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.11.2.tgz#aecb20b50607acf2569b6382167b65a96008bb78"
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
@@ -2482,22 +2482,22 @@ cookies@~0.8.0:
     keygrip "~1.1.0"
 
 core-js-bundle@^3.8.1:
-  version "3.26.0"
-  resolved "https://registry.yarnpkg.com/core-js-bundle/-/core-js-bundle-3.26.0.tgz#9b72fcb655ee8f73aa59ec55c8db0236796bb786"
+  version "3.26.1"
+  resolved "https://registry.yarnpkg.com/core-js-bundle/-/core-js-bundle-3.26.1.tgz#cb064bd53b11632a476b8fc4ef9d020519e7a224"
 
 core-js-compat@^3.25.1:
-  version "3.26.0"
-  resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.26.0.tgz#94e2cf8ba3e63800c4956ea298a6473bc9d62b44"
+  version "3.26.1"
+  resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.26.1.tgz#0e710b09ebf689d719545ac36e49041850f943df"
   dependencies:
     browserslist "^4.21.4"
 
 core-js-pure@^3.25.1:
-  version "3.26.0"
-  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.26.0.tgz#7ad8a5dd7d910756f3124374b50026e23265ca9a"
+  version "3.26.1"
+  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.26.1.tgz#653f4d7130c427820dcecd3168b594e8bb095a33"
 
 cosmiconfig@^7.0.0:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-7.0.1.tgz#714d756522cace867867ccb4474c5d01bbae5d6d"
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-7.1.0.tgz#1443b9afa596b670082ea46cbd8f6a62b84635f6"
   dependencies:
     "@types/parse-json" "^4.0.0"
     import-fresh "^3.2.1"

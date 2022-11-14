@@ -42,8 +42,6 @@
     "test:watch": "run-s build:compile test:dev"
   },
   "dependencies": {
-    "@vaadin/vaadin-lumo-styles": "^23.2.8",
-    "@vaadin/vaadin-themable-mixin": "^23.2.8",
     "lit": "^2.4.1"
   },
   "devDependencies": {
@@ -56,7 +54,8 @@
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "@vaadin-component-factory/vcf-anchor-nav": "^23.2.0",
-    "@vaadin-component-factory/vcf-element-util": "^0.3.0",
+    "@vaadin-component-factory/vcf-element-util": "^0.3.2",
+    "@vaadin/vaadin-lumo-styles": "^23.2.8",
     "@web/dev-server": "^0.1.34",
     "@web/test-runner": "^0.14.0",
     "@webcomponents/webcomponentsjs": "^2.7.0",
@@ -84,7 +83,11 @@
       "@typescript-eslint"
     ],
     "rules": {
+      "no-shadow": "off",
+      "no-dupe-class-members": "off",
+      "no-undef": "off",
       "no-unused-vars": "off",
+      "no-use-before-define": "off",
       "@typescript-eslint/no-unused-vars": [
         "error"
       ],
@@ -97,6 +100,10 @@
           "ignorePackages": true
         }
       ]
+    },
+    "env": {
+      "browser": true,
+      "es6": true
     }
   },
   "prettier": {

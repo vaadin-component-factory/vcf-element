@@ -155,14 +155,28 @@
         </span>
       </h1>
       <api-docs id="API" slot="header"></api-docs>
-      <vcf-anchor-nav-section name="Demo 1">
-        <api-demo></api-demo>
+      <vcf-anchor-nav-section id="demo-1" name="Demo 1">
+        <api-demo>
+          <template data-element="vcf-element" data-target="host">
+            <vcf-element element-attr="1">
+              <div slot="element-slot">Hello</div>
+            </vcf-element>
+          </template>
+        </api-demo>
       </vcf-anchor-nav-section>
-      <vcf-anchor-nav-section name="Demo 2">
-        <api-demo></api-demo>
+      <vcf-anchor-nav-section id="demo-2" name="Demo 2">
+        <api-demo>
+          <template data-element="vcf-element" data-target="host">
+            <vcf-element element-attr="2" title="Hello"></vcf-element>
+          </template>
+        </api-demo>
       </vcf-anchor-nav-section>
-      <vcf-anchor-nav-section name="Demo 3">
-        <api-demo></api-demo>
+      <vcf-anchor-nav-section id="demo-3" name="Demo 3">
+        <api-demo>
+          <template data-element="vcf-element" data-target="host">
+            <vcf-element element-attr="3" title="Hi"></vcf-element>
+          </template>
+        </api-demo>
       </vcf-anchor-nav-section>
     </vcf-anchor-nav>
   </body>
