@@ -23,7 +23,7 @@
     "build:bundle": "rollup -c",
     "build:compile": "tsc",
     "build:watch": "run-s build \"build:compile -- --watch\"",
-    "clean": "rimraf out-tsc demo/custom-elements.json",
+    "clean": "rimraf build out-tsc demo/custom-elements.json",
     "format": "run-s format:**",
     "format:eslint": "eslint --ext .ts,.html . --fix --ignore-path .gitignore",
     "format:prettier": "prettier \"**/*.js\" \"**/*.ts\" --write --ignore-path .gitignore",
