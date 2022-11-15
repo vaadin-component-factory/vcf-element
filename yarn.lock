@@ -1559,9 +1559,9 @@
     smoothscroll-polyfill "^0.4.4"
     stickyfilljs "^2.1.0"
 
-"@vaadin-component-factory/vcf-element-util@^0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@vaadin-component-factory/vcf-element-util/-/vcf-element-util-0.3.2.tgz#2e83acb3f769153f9630ac26bcd5da77d680243f"
+"@vaadin-component-factory/vcf-element-util@^0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@vaadin-component-factory/vcf-element-util/-/vcf-element-util-0.3.4.tgz#c36d90f311dc95ad146aee495cd58d6057715862"
   dependencies:
     chalk "^4.1.2"
     inquirer "^9.1.4"
