@@ -4,6 +4,7 @@
   "description": "--elementdescription--",
   "main": "out-tsc/vcf-element.js",
   "module": "out-tsc/vcf-element.js",
+  "types": "out-tsc/vcf-element.d.ts",
   "type": "module",
   "author": "Vaadin Ltd",
   "license": "Apache-2.0",
@@ -11,8 +12,14 @@
     "type": "git",
     "url": "git+https://github.com/vaadin-component-factory/vcf-element.git"
   },
+  "files": [
+    "out-tsc",
+    "src",
+    "vcf-element.ts"
+  ],
   "keywords": [
-    "lit-element",
+    "lit",
+    "typescript",
     "vaadin",
     "vaadin-component-factory",
     "web-component"
@@ -55,7 +62,7 @@
     "@open-wc/testing": "^3.1.6",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
-    "@vaadin-component-factory/vcf-anchor-nav": "^23.2.0",
+    "@vaadin-component-factory/vcf-anchor-nav": "^23.2.1",
     "@vaadin-component-factory/vcf-element-util": "^0.3.4",
     "@vaadin/vaadin-lumo-styles": "^23.2.8",
     "@web/dev-server": "^0.1.34",

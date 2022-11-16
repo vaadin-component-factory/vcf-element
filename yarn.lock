@@ -1545,16 +1545,16 @@
     "@typescript-eslint/types" "5.42.1"
     eslint-visitor-keys "^3.3.0"
 
-"@vaadin-component-factory/vcf-anchor-nav@^23.2.0":
-  version "23.2.0"
-  resolved "https://registry.yarnpkg.com/@vaadin-component-factory/vcf-anchor-nav/-/vcf-anchor-nav-23.2.0.tgz#58c8d20bf27eca02958c7ee6120d9ca8ebf8d056"
+"@vaadin-component-factory/vcf-anchor-nav@^23.2.1":
+  version "23.2.1"
+  resolved "https://registry.yarnpkg.com/@vaadin-component-factory/vcf-anchor-nav/-/vcf-anchor-nav-23.2.1.tgz#49a18c5dfafc1e6fc3b2dd46e3200cb098a241f4"
   dependencies:
     "@juggle/resize-observer" "^3.1.3"
     "@polymer/polymer" "^3.0.0"
-    "@vaadin/component-base" "^23.2.4"
-    "@vaadin/tabs" "^23.2.4"
-    "@vaadin/vaadin-lumo-styles" "^23.2.4"
-    "@vaadin/vaadin-themable-mixin" "^23.2.4"
+    "@vaadin/component-base" "^23.2.8"
+    "@vaadin/tabs" "^23.2.8"
+    "@vaadin/vaadin-lumo-styles" "^23.2.8"
+    "@vaadin/vaadin-themable-mixin" "^23.2.8"
     intersection-observer "^0.10.0"
     smoothscroll-polyfill "^0.4.4"
     stickyfilljs "^2.1.0"
@@ -1568,7 +1568,7 @@
     replace-in-file "^4.1.2"
     shelljs "^0.8.3"
 
-"@vaadin/component-base@^23.2.4", "@vaadin/component-base@~23.2.8":
+"@vaadin/component-base@^23.2.8", "@vaadin/component-base@~23.2.8":
   version "23.2.8"
   resolved "https://registry.yarnpkg.com/@vaadin/component-base/-/component-base-23.2.8.tgz#df0ac910f08cd416009f4a88c549cdb45811722d"
   dependencies:
@@ -1599,7 +1599,7 @@
     "@vaadin/vaadin-material-styles" "~23.2.8"
     "@vaadin/vaadin-themable-mixin" "~23.2.8"
 
-"@vaadin/tabs@^23.2.4":
+"@vaadin/tabs@^23.2.8":
   version "23.2.8"
   resolved "https://registry.yarnpkg.com/@vaadin/tabs/-/tabs-23.2.8.tgz#473e99a9861540eafef89bc6c2ac1c2e59528796"
   dependencies:
@@ -1623,7 +1623,7 @@
     "@polymer/polymer" "^3.0.0"
     "@vaadin/component-base" "~23.2.8"
 
-"@vaadin/vaadin-lumo-styles@^23.2.4", "@vaadin/vaadin-lumo-styles@^23.2.8", "@vaadin/vaadin-lumo-styles@~23.2.8":
+"@vaadin/vaadin-lumo-styles@^23.2.8", "@vaadin/vaadin-lumo-styles@~23.2.8":
   version "23.2.8"
   resolved "https://registry.yarnpkg.com/@vaadin/vaadin-lumo-styles/-/vaadin-lumo-styles-23.2.8.tgz#2b518aca8c3180cac6aaaf567669fa114e71baee"
   dependencies:
@@ -1640,7 +1640,7 @@
     "@polymer/polymer" "^3.0.0"
     "@vaadin/vaadin-themable-mixin" "~23.2.8"
 
-"@vaadin/vaadin-themable-mixin@^23.2.4", "@vaadin/vaadin-themable-mixin@~23.2.8":
+"@vaadin/vaadin-themable-mixin@^23.2.8", "@vaadin/vaadin-themable-mixin@~23.2.8":
   version "23.2.8"
   resolved "https://registry.yarnpkg.com/@vaadin/vaadin-themable-mixin/-/vaadin-themable-mixin-23.2.8.tgz#7ae96c4a20ea9b82ee04386028d21848caecb528"
   dependencies:
