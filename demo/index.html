@@ -48,8 +48,46 @@
           font-weight: bold;
         }
 
+        api-docs::part(tab-panel),
+        api-demo::part(tab-panel) {
+          border-bottom-right-radius: var(--lumo-border-radius);
+        }
+
+        api-docs {
+          box-shadow: var(--lumo-box-shadow-s);
+          background: var(--lumo-primary-color);
+          border-radius: var(--lumo-border-radius);
+        }
+
+        api-docs::part(tab-panel) {
+          height: 500px;
+          overflow: auto;
+        }
+
+        api-docs::part(header) {
+          display: none;
+        }
+
+        api-docs::part(docs-description) {
+          color: var(--lumo-primary-contrast-color);
+        }
+
+        api-docs::part(docs-container) {
+          background: #fff;
+          border-bottom-left-radius: var(--lumo-border-radius);
+          border-bottom-right-radius: var(--lumo-border-radius);
+        }
+
+        api-docs::part(tabs-container)::part(tabs) {
+          background: var(--lumo-shade-5pct);
+        }
+
         api-demo {
           margin: 0;
+        }
+
+        api-demo[collapsed]::part(demo-tabs) {
+          display: none;
         }
 
         api-demo::part(header) {
@@ -58,6 +96,13 @@
 
         api-demo::part(demo-output) {
           border-top: none;
+          position: relative;
+        }
+
+        api-demo::part(collapse-btn) {
+          position: absolute;
+          right: var(--lumo-space-xs);
+          bottom: 0;
         }
 
         vcf-anchor-nav {
@@ -74,6 +119,13 @@
         vcf-anchor-nav-section {
           height: auto;
           background-color: var(--lumo-base-color);
+          border-bottom: 1px solid var(--lumo-primary-color-50pct);
+          padding: var(--lumo-space-l) 0;
+          box-sizing: border-box;
+        }
+
+        vcf-anchor-nav-section p {
+          margin: 0 0 var(--lumo-space-l) 0;
         }
 
         #elementName {
@@ -121,6 +173,10 @@
           opacity: 0;
         }
 
+        span.no-header {
+          display: none;
+        }
+
         @media only screen and (max-width: 768px) {
           h1.main {
             align-items: flex-start;
@@ -156,6 +212,10 @@
       </h1>
       <api-docs id="API" slot="header"></api-docs>
       <vcf-anchor-nav-section id="demo-1" name="Demo 1">
+        <span slot="header" class="no-header"></span>
+        <p>
+          Use <code>element-attr</code> to set the <code>counter</code> property.
+        </p>
         <api-demo>
           <template data-element="vcf-element" data-target="host">
             <vcf-element element-attr="1">
@@ -165,14 +225,16 @@
         </api-demo>
       </vcf-anchor-nav-section>
       <vcf-anchor-nav-section id="demo-2" name="Demo 2">
-        <api-demo>
+        <span slot="header" class="no-header"></span>
+        <api-demo collapsed>
           <template data-element="vcf-element" data-target="host">
             <vcf-element element-attr="2" title="Hello"></vcf-element>
           </template>
         </api-demo>
       </vcf-anchor-nav-section>
       <vcf-anchor-nav-section id="demo-3" name="Demo 3">
-        <api-demo>
+        <span slot="header" class="no-header"></span>
+        <api-demo collapsed>
           <template data-element="vcf-element" data-target="host">
             <vcf-element element-attr="3" title="Hi"></vcf-element>
           </template>
